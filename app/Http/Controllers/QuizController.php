@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Quiz;
 
 class QuizController extends Controller
 {
@@ -14,7 +15,8 @@ class QuizController extends Controller
     public function index()
     {
         //
-        return view('quiz.index');
+        $all = Quiz::all();
+        return view('quiz.index', compact('all'));
     }
 
     /**
@@ -25,6 +27,7 @@ class QuizController extends Controller
     public function create()
     {
         //
+        return view('quiz.create');
     }
 
     /**

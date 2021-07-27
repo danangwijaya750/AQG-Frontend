@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}">
     <link href="{{ asset('assets/css/sweetalert.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" type="text/css"/>
-    {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/> --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
 
 
