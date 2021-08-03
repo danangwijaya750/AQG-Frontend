@@ -111,41 +111,36 @@
                                 <div class="col-md-12">
                                     <div class="row">
                                         <h4>Generate Baru-baru ini</h4>
-
+                                        <div class="card-header-action">
+                                            <a href="{{ route('quiz.index') }}">
+                                              Lihat Semua
+                                            </a>
+                                          </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <table class="table table-bordered">
+                                <table id="quiz_table" class="table table-responsive table-bordered">
                                     <thead>
                                       <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">First</th>
-                                        <th scope="col">Last</th>
-                                        <th scope="col">Handle</th>
+                                        <th scope="col" width="3%">No</th>
+                                        <th scope="col">Judul Soal</th>
+                                        <th scope="col">Dibuat Pada</th>
+                                        <th scope="col"></th>
                                       </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach ($all as $quiz )
                                       <tr>
                                         <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
+                                        <td>{{ $quiz->title }}</td>
+                                        <td>{{ $quiz->created_at }}</td>
+                                        <td><a href=""><i class="fas fa-arrow-right    "></i></a></td>
                                       </tr>
-                                      <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                      </tr>
-                                      <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                      </tr>
+                                      @endforeach
                                     </tbody>
                                   </table>
+
                             </div>
                         </div>
                     </div>
@@ -165,22 +160,15 @@
 
                         <div class="card-body">
                             <div class="row">
-
-
                                 <div class="col-md-12">
-                                    <div class="col-sm-3">
-                                            <div class="flex-column align-items-start">
-                                                <div class="row">
-                                                    <img  src="{{ asset('img/level.svg') }}" alt="" srcset=""></div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="d-flex w-100">
-                                                        <h6 class="mb-1">Tingkat Pendidikan</h6>
-                                                        </div>
-                                                        <p class="mb-1">SMK</p>
-                                                </div>
-
+                                    <div class="col-md-3">
+                                        <div class="d-flex align-items-start">
+                                            <img  src="{{ asset('img/level.svg') }}">
+                                            <div>
+                                              <h6 class="mb-1 pl-3">Tingkat Pendidikan</h6>
+                                              <p class="mb-1 pl-3">SMK</p>
                                             </div>
+                                        </div>
                                     </div>
 
                                         {{-- <div class="float-left">
@@ -195,7 +183,7 @@
 
 
 
-                                <div class="col-md-12">
+                                <div class="col-md-12 mt-4">
                                     <label class="control-label">Kualitas Soal <i class="fas fa-info-circle    "></i></label>
                                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                                         <li class="nav-item">
@@ -242,5 +230,4 @@
         </div>
 
     </section>
-
 @endsection

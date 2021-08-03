@@ -31,7 +31,8 @@ class QuizController extends Controller
     public function create()
     {
         //
-        return view('quiz.create');
+        $all = Quiz::all();
+        return view('quiz.create', compact('all'));
     }
 
     /**
