@@ -16,8 +16,8 @@ class CreateQuizTable extends Migration
         Schema::create('quiz', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
+            $table->integer('level_id');
             $table->string('title');
-            $table->string('education_level');
             $table->integer('length');
             $table->integer('type');
             $table->timestamps();

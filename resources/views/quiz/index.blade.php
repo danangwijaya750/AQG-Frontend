@@ -13,16 +13,18 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-header container-fluid">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h4>Daftar Soal</h4>
-                                </div>
+                        <div class="card-header">
+                            <h4>Daftar Soal</h4>
+                            <div class="card-header-action">
+                              <a href="{{ route('quiz.create') }}" class="btn btn-primary">
+                                Generate Soal
+                              </a>
                             </div>
-                            <div class="float-right">
+                          </div>
+                            {{-- <div class="float-right">
                                 <a href="#" class="btn btn-md btn-icon icon-right btn-primary">Generate Soal <i class="fa fa-plus" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
+                            </div> --}}
+
                         <div class="card-body">
                             <table id="quiz_table" class="table table-responsive table-bordered">
                                 <thead>

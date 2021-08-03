@@ -20,7 +20,7 @@
                         </div>
 
                         <div class="card-body">
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-6">
                                     <label class="form-label">Tingkat Pendidikan</label>
                                     <div class="selectgroup w-100">
                                     <label class="selectgroup-item">
@@ -30,6 +30,14 @@
                                     <label class="selectgroup-item">
                                         <input type="radio" name="value" value="2" class="selectgroup-input">
                                         <span class="selectgroup-button">SMP</span>
+                                    </label>
+                                    <label class="selectgroup-item">
+                                        <input type="radio" name="value" value="3" class="selectgroup-input">
+                                        <span class="selectgroup-button">SMA</span>
+                                    </label>
+                                    <label class="selectgroup-item">
+                                        <input type="radio" name="value" value="4" class="selectgroup-input">
+                                        <span class="selectgroup-button">SMK</span>
                                     </label>
                                     </div>
                             </div>
@@ -68,7 +76,7 @@
                             </div>
 
                             <div class="form-row col-md-12">
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-5">
                                     <label for="">Jenis Pertanyaan</label>
                                     <div class="selectgroup w-100">
                                     <label class="selectgroup-item">
@@ -84,7 +92,7 @@
                                     <div class="form-group col-md-1">
 
                                     <label for="">Jumlah</label>
-                                    <input style="height: calc(1.5em + .5rem + 6px);" type="number" class="form-control form-control-sm">
+                                    <input style="height: calc(1.5em + .5rem + 6px);" type="number" class="form-control form-control-sm" placeholder="0">
                                     {{-- <input type="number" name="" id="" class="form-control" placeholder=""> --}}
                                     </div>
 
@@ -156,34 +164,78 @@
                         </div>
 
                         <div class="card-body">
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                              <li class="nav-item">
-                                <a class="nav-link active show" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-                              </li>
-                            </ul>
-                            <div class="tab-content" id="myTabContent">
-                              <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                              </div>
-                              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                Sed sed metus vel lacus hendrerit tempus. Sed efficitur velit tortor, ac efficitur est lobortis quis. Nullam lacinia metus erat, sed fermentum justo rutrum ultrices. Proin quis iaculis tellus. Etiam ac vehicula eros, pharetra consectetur dui. Aliquam convallis neque eget tellus efficitur, eget maximus massa imperdiet. Morbi a mattis velit. Donec hendrerit venenatis justo, eget scelerisque tellus pharetra a.
-                              </div>
-                              <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                Vestibulum imperdiet odio sed neque ultricies, ut dapibus mi maximus. Proin ligula massa, gravida in lacinia efficitur, hendrerit eget mauris. Pellentesque fermentum, sem interdum molestie finibus, nulla diam varius leo, nec varius lectus elit id dolor. Nam malesuada orci non ornare vulputate. Ut ut sollicitudin magna. Vestibulum eget ligula ut ipsum venenatis ultrices. Proin bibendum bibendum augue ut luctus.
-                              </div>
+                            <div class="row">
+
+
+                                <div class="col-md-12">
+                                    <div class="col-sm-3">
+                                            <div class="flex-column align-items-start">
+                                                <div class="row">
+                                                    <img  src="{{ asset('img/level.svg') }}" alt="" srcset=""></div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="d-flex w-100">
+                                                        <h6 class="mb-1">Tingkat Pendidikan</h6>
+                                                        </div>
+                                                        <p class="mb-1">SMK</p>
+                                                </div>
+
+                                            </div>
+                                    </div>
+
+                                        {{-- <div class="float-left">
+                                            <img src="{{ asset('img/level.svg') }}" alt="" srcset=""></div>
+                                            <h6> Tingkat Pendidikan</h6>
+                                            <span>SMK</span>
+                                        </div> --}}
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-3"></div>
+                                </div>
                             </div>
-                          </div>
+
+
+
+                                <div class="col-md-12">
+                                    <label class="control-label">Kualitas Soal <i class="fas fa-info-circle    "></i></label>
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                          <a class="nav-link active show" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">C1 (Mengingat)</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">C2 (Memahami)</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">C3 (Mengaplikasikan)</a>
+                                        </li>
+                                      </ul>
+                                      <div class="col-md-8">
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                            </div>
+                                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                              Sed sed metus vel lacus hendrerit tempus. Sed efficitur velit tortor, ac efficitur est lobortis quis. Nullam lacinia metus erat, sed fermentum justo rutrum ultrices. Proin quis iaculis tellus. Etiam ac vehicula eros, pharetra consectetur dui. Aliquam convallis neque eget tellus efficitur, eget maximus massa imperdiet. Morbi a mattis velit. Donec hendrerit venenatis justo, eget scelerisque tellus pharetra a.
+                                            </div>
+                                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                              Vestibulum imperdiet odio sed neque ultricies, ut dapibus mi maximus. Proin ligula massa, gravida in lacinia efficitur, hendrerit eget mauris. Pellentesque fermentum, sem interdum molestie finibus, nulla diam varius leo, nec varius lectus elit id dolor. Nam malesuada orci non ornare vulputate. Ut ut sollicitudin magna. Vestibulum eget ligula ut ipsum venenatis ultrices. Proin bibendum bibendum augue ut luctus.
+                                            </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                          <div class="card">
+                                              <div class="card-header">
+
+                                              </div>
+                                          </div>
+                                      </div>
+
+                            </div>
+                            </div>
                     </div>
                 </div>
             </div>
