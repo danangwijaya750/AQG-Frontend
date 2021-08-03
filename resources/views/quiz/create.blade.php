@@ -160,7 +160,7 @@
 
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-12 d-inline-flex">
                                     <div class="col-md-3">
                                         <div class="d-flex align-items-start">
                                             <img  src="{{ asset('img/level.svg') }}">
@@ -170,14 +170,33 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                        {{-- <div class="float-left">
-                                            <img src="{{ asset('img/level.svg') }}" alt="" srcset=""></div>
-                                            <h6> Tingkat Pendidikan</h6>
-                                            <span>SMK</span>
-                                        </div> --}}
-                                    <div class="col-md-3"></div>
-                                    <div class="col-md-3"></div>
+                                    <div class="col-md-3">
+                                        <div class="d-flex align-items-start">
+                                            <img  src="{{ asset('img/lesson.svg') }}">
+                                            <div>
+                                              <h6 class="mb-1 pl-3">Mata Pelajaran</h6>
+                                              <p class="mb-1 pl-3">Matematika</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="d-flex align-items-start">
+                                            <img  src="{{ asset('img/kompetensi_inti.svg') }}">
+                                            <div>
+                                              <h6 class="mb-1 pl-3">Kompetensi Inti</h6>
+                                              <p class="mb-1 pl-3">3. Pengetahuan</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="d-flex align-items-start">
+                                            <img  src="{{ asset('img/KD.svg') }}">
+                                            <div>
+                                              <h6 class="mb-1 pl-3">Kompetensi Dasar</h6>
+                                              <p class="mb-1 pl-3">3.1 Menganalisis jaringan berbasis luas</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
