@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lesson;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Models\Quiz;
+use App\Models\Level;
+use Auth;
 
 class QuizController extends Controller
 {
@@ -19,8 +23,23 @@ class QuizController extends Controller
     public function index()
     {
         //
-        $all = Quiz::all();
+        $user_id = Auth::user()->user_id;
+        $all = Quiz::where('user_id', $user_id);
         return view('quiz.index', compact('all'));
+    }
+
+    public function search($request)
+    {
+        $lessons = [];
+        if($request->has('q')){
+            $search = $request->q;
+            $lessons = Lesson::select('id','title')
+                    ->where('name', 'LIKE', "%$search%")
+            		->get();
+        }
+        return response()->json($lessons);
+
+
     }
 
     /**
@@ -32,7 +51,9 @@ class QuizController extends Controller
     {
         //
         $all = Quiz::all();
-        return view('quiz.create', compact('all'));
+        $lessons = Lesson::all();
+        $class = Level::all();
+        return view('quiz.create', compact('all', 'lessons', 'class'));
     }
 
     /**
@@ -44,6 +65,26 @@ class QuizController extends Controller
     public function store(Request $request)
     {
         //
+
+        $title = $request->title;
+        $level = $request->level;
+        $class = $request->class;
+        $lesson = $request->lesson;
+        $length = $request->length;
+        $type = $request->type;
+
+        $quiz = Quiz::create([
+            'user_id' => $request->Auth::user()->id,
+            'title' => $title,
+            'level_id' => $level,
+            'class_id' => $class,
+            'lesson_id' => $lesson,
+            'length' => $length,
+            'type' => $type,
+        ]);
+
+        $quiz->save();
+        return redirect('quiz.create');
     }
 
     /**
@@ -90,4 +131,12 @@ class QuizController extends Controller
     {
         //
     }
+    public function generated($id)
+    {
+        //
+
+        return view('quiz.generated');
+    }
+
+
 }

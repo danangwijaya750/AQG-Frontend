@@ -14,7 +14,9 @@ class Quiz extends Model
     protected $fillable = [
         'user_id',
         'title',
-        'level',
+        'level_id',
+        'class_id',
+        'lesson_id',
         'length',
         'type',
     ];

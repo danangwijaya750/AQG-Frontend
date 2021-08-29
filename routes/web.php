@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\QuizController as QuizController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +18,9 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/lessons-search', [QuizController::class, 'search']);
+Route::get('/quiz/generated/{id}',  [QuizController::class, 'generated'])->name('quiz.generated');
 
-Route::resource('quiz', App\Http\Controllers\QuizController::class);
+Route::resource('quiz', QuizController::class);
+
 

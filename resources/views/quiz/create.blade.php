@@ -20,23 +20,37 @@
                         </div>
 
                         <div class="card-body">
+
+
+                            <form action="" method="POST" action="{{ route('quiz.store') }}">
+                                @csrf
+                                @method('PUT')
+
+                                <div class="form-group col-md-12">
+                                <label for="lesson">Judul Soal</label>
+                                <input type="text" class="form-control" name="title "id="title" placeholder="Isikan Judul Soal">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>Materi</label>
+                                <textarea class="form-control" placeholder="Masukkan Paragraf Materi" style="margin-top: 0px; margin-bottom: 0px; height: 122px;"></textarea>
+                              </div>
                             <div class="form-group col-md-6">
                                     <label class="form-label">Tingkat Pendidikan</label>
                                     <div class="selectgroup w-100">
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="value" value="1" class="selectgroup-input" checked="">
+                                        <input type="radio" name="level" value="1" class="selectgroup-input">
                                         <span class="selectgroup-button">SD</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="value" value="2" class="selectgroup-input">
+                                        <input type="radio" name="level" value="2" class="selectgroup-input">
                                         <span class="selectgroup-button">SMP</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="value" value="3" class="selectgroup-input">
+                                        <input type="radio" name="level" value="3" class="selectgroup-input">
                                         <span class="selectgroup-button">SMA</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="value" value="4" class="selectgroup-input">
+                                        <input type="radio" name="level" value="4" class="selectgroup-input">
                                         <span class="selectgroup-button">SMK</span>
                                     </label>
                                     </div>
@@ -44,47 +58,35 @@
 
                             <div class="form-row col-md-12">
                                 <div class="form-group col-md-10">
-                                    <label for="lesson">Mata Pelajaran</label>
-                                    <input type="text" class="form-control" id="lesson" placeholder="Pilih atau cari Mata Pelajaran">
+                                    <label for="select2-lesson">Mata Pelajaran</label>
+                                    <select id="select2-lesson" name="lesson" class="form-control">
+                                        <option disabled selected>Pilih Mata Pelajaran</option>
+                                        @foreach($lessons as $l)
+                                        <option value="{{ $l->id }}">{{ $l->title }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="class">Kelas</label>
-                                    <select id="class" class="form-control">
-                                    <option selected="">Choose...</option>
-                                    <option>...</option>
+                                    <select id="" name="class" class="form-control">
+                                    <option disabled selected>Pilih Kelas</option>
+                                    @foreach ($class as $c)
+                                    <option value="{{ $c->id }}">{{ $c->class }} - {{ $c->title }}</option>
+
+                                    @endforeach
                                     </select>
                                 </div>
                             </div>
-
-                            <div class="form-row col-md-12">
-                                <div class="form-group col-md-6">
-                                    <label>Kompetensi Inti</label>
-                                    <select class="form-control __web-inspector-hide-shortcut__">
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
-                                        </select>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Kompetensi Dasar</label>
-                                    <select class="form-control __web-inspector-hide-shortcut__">
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
-                                        </select>
-                                </div>
-                            </div>
-
                             <div class="form-row col-md-12">
                                 <div class="form-group col-md-5">
                                     <label for="">Jenis Pertanyaan</label>
                                     <div class="selectgroup w-100">
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="jenis_pertanyaan" value="1" class="selectgroup-input" checked="">
+                                        <input type="radio" name="type" value="1" class="selectgroup-input">
                                         <span class="selectgroup-button">Pilihan Ganda</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="jenis_pertanyaan" value="2" class="selectgroup-input">
+                                        <input type="radio" name="type" value="2" class="selectgroup-input">
                                         <span class="selectgroup-button">Isian Singkat</span>
                                     </label>
                                     </div>
@@ -92,7 +94,7 @@
                                     <div class="form-group col-md-1">
 
                                     <label for="">Jumlah</label>
-                                    <input style="height: calc(1.5em + .5rem + 6px);" type="number" class="form-control form-control-sm" placeholder="0">
+                                    <input style="height: calc(1.5em + .5rem + 6px);" type="number" name="length" class="form-control form-control-sm" placeholder="0">
                                     {{-- <input type="number" name="" id="" class="form-control" placeholder=""> --}}
                                     </div>
 
@@ -102,6 +104,7 @@
                             <div class="card-footer text-right">
                                 <button class="btn btn-icon icon-right btn-primary" type="submit">Generate Soal <i class="fas fa-book-open    "></i></button>
                             </div>
+                            </form>
                         </div>
 
                     </div>
@@ -146,107 +149,33 @@
                     </div>
             </div>
 
-            <div class="row-lg-12">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-header container-fluid">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <h4>Judul Soal</h4>
 
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12 d-inline-flex">
-                                    <div class="col-md-3">
-                                        <div class="d-flex align-items-start">
-                                            <img  src="{{ asset('img/level.svg') }}">
-                                            <div>
-                                              <h6 class="mb-1 pl-3">Tingkat Pendidikan</h6>
-                                              <p class="mb-1 pl-3">SMK</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="d-flex align-items-start">
-                                            <img  src="{{ asset('img/lesson.svg') }}">
-                                            <div>
-                                              <h6 class="mb-1 pl-3">Mata Pelajaran</h6>
-                                              <p class="mb-1 pl-3">Matematika</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="d-flex align-items-start">
-                                            <img  src="{{ asset('img/kompetensi_inti.svg') }}">
-                                            <div>
-                                              <h6 class="mb-1 pl-3">Kompetensi Inti</h6>
-                                              <p class="mb-1 pl-3">3. Pengetahuan</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="d-flex align-items-start">
-                                            <img  src="{{ asset('img/KD.svg') }}">
-                                            <div>
-                                              <h6 class="mb-1 pl-3">Kompetensi Dasar</h6>
-                                              <p class="mb-1 pl-3">3.1 Menganalisis jaringan berbasis luas</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                                <div class="col-md-12 mt-4">
-                                    <label class="control-label">Kualitas Soal <i class="fas fa-info-circle    "></i></label>
-                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                        <li class="nav-item">
-                                          <a class="nav-link active show" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">C1 (Mengingat)</a>
-                                        </li>
-                                        <li class="nav-item">
-                                          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">C2 (Memahami)</a>
-                                        </li>
-                                        <li class="nav-item">
-                                          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">C3 (Mengaplikasikan)</a>
-                                        </li>
-                                      </ul>
-                                      <div class="col-md-8">
-                                        <div class="tab-content" id="myTabContent">
-                                            <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                            </div>
-                                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                              Sed sed metus vel lacus hendrerit tempus. Sed efficitur velit tortor, ac efficitur est lobortis quis. Nullam lacinia metus erat, sed fermentum justo rutrum ultrices. Proin quis iaculis tellus. Etiam ac vehicula eros, pharetra consectetur dui. Aliquam convallis neque eget tellus efficitur, eget maximus massa imperdiet. Morbi a mattis velit. Donec hendrerit venenatis justo, eget scelerisque tellus pharetra a.
-                                            </div>
-                                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                              Vestibulum imperdiet odio sed neque ultricies, ut dapibus mi maximus. Proin ligula massa, gravida in lacinia efficitur, hendrerit eget mauris. Pellentesque fermentum, sem interdum molestie finibus, nulla diam varius leo, nec varius lectus elit id dolor. Nam malesuada orci non ornare vulputate. Ut ut sollicitudin magna. Vestibulum eget ligula ut ipsum venenatis ultrices. Proin bibendum bibendum augue ut luctus.
-                                            </div>
-                                          </div>
-                                      </div>
-                                      <div class="col-md-4">
-                                          <div class="card">
-                                              <div class="card-header">
-
-                                              </div>
-                                          </div>
-                                      </div>
-
-                            </div>
-                            </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
     </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $('.select2-lesson').select2({
+        placeholder: "Pilih atau cari Mata Pelajaran",
+        allowClear: false,
+        ajax: {
+            url: '/quiz/lessons-search',
+            dataType: 'json',
+            delay: 250,
+            processResults: function (data) {
+                return {
+                    results: $.map(data, function (item) {
+                        return {
+                            text: item.title,
+                            id: item.id
+                        }
+                    })
+                };
+            },
+            cache: true
+        }
+        });
+
+    </script>
 @endsection
