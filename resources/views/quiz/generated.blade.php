@@ -10,19 +10,18 @@
         <div class="section-body">
             <h2 class="section-title">Generate Soal</h2>
             <p class="section-lead">Isi form dibawah untuk membuat soal.</p>
-        
+
             <div class="row-lg-12">
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-header container-fluid">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <h4>Judul Soal</h4>
-
-                                </div>
+                        <div class="card-header">
+                            <h4>{{ $quiz->title }}</h4>
+                            <div class="card-header-action">
+                              <a href="{{ route('quiz.create') }}" class="btn btn-primary">
+                                Simpan Soal
+                              </a>
                             </div>
-                        </div>
-
+                          </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12 d-inline-flex">
@@ -31,7 +30,15 @@
                                             <img  src="{{ asset('img/level.svg') }}">
                                             <div>
                                               <h6 class="mb-1 pl-3">Tingkat Pendidikan</h6>
-                                              <p class="mb-1 pl-3">SMK</p>
+                                              <p class="mb-1 pl-3">@if($quiz->level_id == 1)
+                                                SD
+                                                @elseif($quiz->level_id == 2)
+                                                SMP
+                                                @elseif($quiz->level_id == 3)
+                                                SMA
+                                                @elseif($quiz->level_id == 4)
+                                                SMK
+                                                @endif</p>
                                             </div>
                                         </div>
                                     </div>
@@ -40,7 +47,7 @@
                                             <img  src="{{ asset('img/lesson.svg') }}">
                                             <div>
                                               <h6 class="mb-1 pl-3">Mata Pelajaran</h6>
-                                              <p class="mb-1 pl-3">Matematika</p>
+                                              <p class="mb-1 pl-3">{{ $lesson->title }}</p>
                                             </div>
                                         </div>
                                     </div>

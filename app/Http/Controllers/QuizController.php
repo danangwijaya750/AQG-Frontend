@@ -23,8 +23,9 @@ class QuizController extends Controller
     public function index()
     {
         //
-        $user_id = Auth::user()->user_id;
-        $all = Quiz::where('user_id', $user_id);
+        $user_id = Auth::user()->id;
+        $all = Quiz::where('user_id', $user_id)->get();
+        // dd($user_id);
         return view('quiz.index', compact('all'));
     }
 
@@ -38,8 +39,6 @@ class QuizController extends Controller
             		->get();
         }
         return response()->json($lessons);
-
-
     }
 
     /**
@@ -50,7 +49,7 @@ class QuizController extends Controller
     public function create()
     {
         //
-        $all = Quiz::all();
+        $all = Quiz::orderBy('created_at', 'desc')->paginate(10);
         $lessons = Lesson::all();
         $class = Level::all();
         return view('quiz.create', compact('all', 'lessons', 'class'));
@@ -65,7 +64,10 @@ class QuizController extends Controller
     public function store(Request $request)
     {
         //
-
+        // $request->validate([
+        //     'title' => 'required'
+        // ]);
+        $user_id = Auth::user()->id;
         $title = $request->title;
         $level = $request->level;
         $class = $request->class;
@@ -73,8 +75,9 @@ class QuizController extends Controller
         $length = $request->length;
         $type = $request->type;
 
+
         $quiz = Quiz::create([
-            'user_id' => $request->Auth::user()->id,
+            'user_id' => $user_id,
             'title' => $title,
             'level_id' => $level,
             'class_id' => $class,
@@ -82,9 +85,11 @@ class QuizController extends Controller
             'length' => $length,
             'type' => $type,
         ]);
-
+        // dd($request);
         $quiz->save();
-        return redirect('quiz.create');
+        $quiz_id = $quiz->id;
+
+        return redirect()->route('quiz.generated', $quiz_id);
     }
 
     /**
@@ -134,8 +139,12 @@ class QuizController extends Controller
     public function generated($id)
     {
         //
+        $quiz_id = Quiz::findOrFail($id)->get();
+        $quiz = Quiz::where('id', $id)->first();
+        $lesson = Lesson::where('id', $quiz->lesson_id)->first();
+        // dd($lesson);
 
-        return view('quiz.generated');
+        return view('quiz.generated', compact('quiz_id','quiz','lesson'));
     }
 
 

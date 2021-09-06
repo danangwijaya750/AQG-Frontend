@@ -21,14 +21,12 @@
 
                         <div class="card-body">
 
-
-                            <form action="" method="POST" action="{{ route('quiz.store') }}">
+                            <form method="POST" action="{{ route('quiz.store') }}">
                                 @csrf
-                                @method('PUT')
 
                                 <div class="form-group col-md-12">
                                 <label for="lesson">Judul Soal</label>
-                                <input type="text" class="form-control" name="title "id="title" placeholder="Isikan Judul Soal">
+                                <input type="text" class="form-control" name="title" placeholder="Isikan Judul Soal">
                             </div>
                             <div class="form-group col-md-12">
                                 <label>Materi</label>
@@ -82,12 +80,12 @@
                                     <label for="">Jenis Pertanyaan</label>
                                     <div class="selectgroup w-100">
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="type" value="1" class="selectgroup-input">
-                                        <span class="selectgroup-button">Pilihan Ganda</span>
-                                    </label>
-                                    <label class="selectgroup-item">
                                         <input type="radio" name="type" value="2" class="selectgroup-input">
                                         <span class="selectgroup-button">Isian Singkat</span>
+                                    </label>
+                                    <label class="selectgroup-item">
+                                        <input type="radio" name="type" value="1" class="selectgroup-input">
+                                        <span class="selectgroup-button">Pilihan Ganda</span>
                                     </label>
                                     </div>
                                     </div>
@@ -133,9 +131,10 @@
                                       </tr>
                                     </thead>
                                     <tbody>
+                                    <?php $no=1; ?>
                                     @foreach ($all as $quiz )
                                       <tr>
-                                        <th scope="row">1</th>
+                                        <td scope="row"><?php echo $no++; ?></td>
                                         <td>{{ $quiz->title }}</td>
                                         <td>{{ $quiz->created_at }}</td>
                                         <td><a href=""><i class="fas fa-arrow-right    "></i></a></td>
@@ -176,6 +175,20 @@
             cache: true
         }
         });
-
+        function makeTableScroll() {
+                // Constant retrieved from server-side via JSP
+            var maxRows = 10;
+            var table = document.getElementById('quiz_table');
+            var wrapper = table.parentNode;
+            var rowsInTable = table.rows.length;
+            var height = 0;
+            if (rowsInTable > maxRows) {
+                for (var i = 0; i < maxRows; i++) {
+                    height += table.rows[i].clientHeight;
+                }
+                wrapper.style.height = height + "px";
+                }
+            }
+        }
     </script>
 @endsection
