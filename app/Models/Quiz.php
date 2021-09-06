@@ -17,6 +17,7 @@ class Quiz extends Model
         'level_id',
         'class_id',
         'lesson_id',
+        'is_save',
         'length',
         'type',
     ];

@@ -22,7 +22,7 @@ class CreateQuizTable extends Migration
             $table->string('title')->nullable();
             $table->integer('length');
             $table->integer('type');
-            $table->integer('is_save')->default('0');
+            $table->tinyInteger('is_save');
             $table->timestamps();
         });
     }

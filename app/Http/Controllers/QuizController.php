@@ -49,7 +49,7 @@ class QuizController extends Controller
     public function create()
     {
         //
-        $all = Quiz::orderBy('created_at', 'desc')->paginate(10);
+        $all = Quiz::where('user_id', Auth::user()->id)->orderBy('created_at', 'asc')->paginate(10);
         $lessons = Lesson::all();
         $class = Level::all();
         return view('quiz.create', compact('all', 'lessons', 'class'));
@@ -74,6 +74,7 @@ class QuizController extends Controller
         $lesson = $request->lesson;
         $length = $request->length;
         $type = $request->type;
+        $is_save = 0;
 
 
         $quiz = Quiz::create([
@@ -82,6 +83,7 @@ class QuizController extends Controller
             'level_id' => $level,
             'class_id' => $class,
             'lesson_id' => $lesson,
+            'is_save' => $is_save,
             'length' => $length,
             'type' => $type,
         ]);
