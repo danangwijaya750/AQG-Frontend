@@ -8,6 +8,8 @@ use Illuminate\Http\Response;
 use App\Models\Quiz;
 use App\Models\Level;
 use Auth;
+use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Http;
 
 class QuizController extends Controller
 {
@@ -24,7 +26,7 @@ class QuizController extends Controller
     {
         //
         $user_id = Auth::user()->id;
-        $all = Quiz::where('user_id', $user_id)->get();
+        $all = Quiz::where('user_id', $user_id)->where('is_save', 0)->get();
         // dd($user_id);
         return view('quiz.index', compact('all'));
     }
@@ -52,6 +54,7 @@ class QuizController extends Controller
         $all = Quiz::where('user_id', Auth::user()->id)->orderBy('created_at', 'asc')->paginate(10);
         $lessons = Lesson::all();
         $class = Level::all();
+
         return view('quiz.create', compact('all', 'lessons', 'class'));
     }
 
@@ -74,8 +77,8 @@ class QuizController extends Controller
         $lesson = $request->lesson;
         $length = $request->length;
         $type = $request->type;
+        $materi = $request->materi;
         $is_save = 0;
-
 
         $quiz = Quiz::create([
             'user_id' => $user_id,
@@ -88,10 +91,19 @@ class QuizController extends Controller
             'type' => $type,
         ]);
         // dd($request);
-        $quiz->save();
+        // $quiz->save();
         $quiz_id = $quiz->id;
 
-        return redirect()->route('quiz.generated', $quiz_id);
+        $base_url = 'http://34.121.75.4';
+        $response = Http::asForm()->post($base_url.'/generator', [
+            'materi' => $materi
+        ]);
+
+        $data = json_decode($response, true);
+
+        // dd($data[0]->q);
+
+        return redirect()->route('quiz.generated', $quiz_id)->with(['data' => $data]);
     }
 
     /**
@@ -141,12 +153,19 @@ class QuizController extends Controller
     public function generated($id)
     {
         //
-        $quiz_id = Quiz::findOrFail($id)->get();
-        $quiz = Quiz::where('id', $id)->first();
-        $lesson = Lesson::where('id', $quiz->lesson_id)->first();
-        // dd($lesson);
+        $data = session()->get('data');
+        if (session()->has('data')) {
+            $quiz_id = Quiz::findOrFail($id)->get();
+            $quiz = Quiz::where('id', $id)->first();
+            $lesson = Lesson::where('id', $quiz->lesson_id)->first();
 
-        return view('quiz.generated', compact('quiz_id','quiz','lesson'));
+            // dd($data);
+            return view('quiz.generated', compact('quiz_id','quiz','lesson','data'));
+        } else {
+            return redirect()->route('quiz.create');
+        }
+
+
     }
 
 

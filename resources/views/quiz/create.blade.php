@@ -30,7 +30,7 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <label>Materi</label>
-                                <textarea class="form-control" placeholder="Masukkan Paragraf Materi" style="margin-top: 0px; margin-bottom: 0px; height: 122px;"></textarea>
+                                <textarea class="form-control" name="materi" placeholder="Masukkan Paragraf Materi" style="margin-top: 0px; margin-bottom: 0px; height: 122px;"></textarea>
                               </div>
                             <div class="form-group col-md-6">
                                     <label class="form-label">Tingkat Pendidikan</label>
