@@ -20,10 +20,13 @@
                         </div>
 
                         <div class="card-body">
+                        @if (session('error'))
+                        <div class="alert alert-danger alert-dismissible show fade" role="alert">{{ session('error') }}
 
-                            <form method="POST" action="{{ route('quiz.store') }}">
+                        </div>
+                        @endif
+                                <form method="POST" action="{{ route('quiz.store') }}">
                                 @csrf
-
                                 <div class="form-group col-md-12">
                                 <label for="lesson">Judul Soal</label>
                                 <input type="text" class="form-control" name="title" placeholder="Isikan Judul Soal">
@@ -89,18 +92,18 @@
                                     </label>
                                     </div>
                                     </div>
-                                    <div class="form-group col-md-1">
+                                    {{-- <div class="form-group col-md-1">
 
                                     <label for="">Jumlah</label>
                                     <input style="height: calc(1.5em + .5rem + 6px);" type="number" name="length" class="form-control form-control-sm" placeholder="0">
-                                    {{-- <input type="number" name="" id="" class="form-control" placeholder=""> --}}
-                                    </div>
+                                    <input type="number" name="" id="" class="form-control" placeholder="">
+                                    </div> --}}
 
                                 </div>
                             </div>
 
                             <div class="card-footer text-right">
-                                <button class="btn btn-icon icon-right btn-primary" type="submit">Generate Soal <i class="fas fa-book-open    "></i></button>
+                                <button id="btn_generate" class="btn btn-icon icon-right btn-primary" type="submit">Generate Soal <i class="fas fa-book-open    "></i></button>
                             </div>
                             </form>
                         </div>
@@ -137,7 +140,7 @@
                                         <td scope="row"><?php echo $no++; ?></td>
                                         <td>{{ $quiz->title }}</td>
                                         <td>{{ $quiz->created_at }}</td>
-                                        <td><a href=""><i class="fas fa-arrow-right    "></i></a></td>
+                                        <td><a href="{{ route('quiz.show', $quiz->id) }}"><i class="fas fa-arrow-right    "></i></a></td>
                                       </tr>
                                       @endforeach
                                     </tbody>
@@ -189,6 +192,12 @@
                 wrapper.style.height = height + "px";
                 }
             }
-        }
+
+        var $button = $("button");
+
+        $($button).on("click", function(){
+                $(this).addClass("btn-progress")
+        })
+
     </script>
 @endsection

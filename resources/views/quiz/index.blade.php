@@ -10,6 +10,16 @@
         <div class="section-body">
             {{-- <h2 class="section-title">This is Example Page</h2> --}}
             {{-- <p class="section-lead">This page is just an example for you to create your own page.</p> --}}
+            @if (session()->has('message'))
+            <div class="alert alert-success alert-dismissible show fade">
+                <div class="alert-body">
+                  <button class="close" data-dismiss="alert">
+                    <span>×</span>
+                  </button>
+                  {{ session()->get('message') }}
+                </div>
+              </div>
+            @endif
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
@@ -32,7 +42,7 @@
                                     <th scope="col" width="3%">No</th>
                                     <th scope="col">Judul Soal</th>
                                     <th class="text-center" scope="col" width="15%" >Tingkat Pendidikan</th>
-                                    <th class="text-center" scope="col" width="15%">Jumlah Soal</th>
+                                    {{-- <th class="text-center" scope="col" width="15%">Jumlah Soal</th> --}}
                                     <th class="text-center" scope="col">Jenis Soal</th>
                                     <th class="text-center" scope="col">Dibuat Pada</th>
                                     <th scope="col">Aksi</th>
@@ -55,7 +65,7 @@
                                         SMK
                                         @endif
                                     </td>
-                                    <td class="text-center">{{ $quiz->length }}</td>
+                                    {{-- <td class="text-center">{{ $quiz->length }}</td> --}}
                                     <td class="text-center">
                                         @if ($quiz->type!=1)
                                         <span class="badge badge-info">Isian Singkat</span>
@@ -64,10 +74,19 @@
                                         @endif
                                     <td class="text-center"> {{ $quiz->created_at }}</td>
                                     <td>
-                                        <div class="btn-group">
-                                            <a href="#" class="btn btn-md btn-icon icon-right btn-success">Export <i class="fas fa-file-export"></i></a>
-                                            <a href="#" class="btn btn-md btn-icon icon-right btn-warning">Detail <i class="fa fa-eye" aria-hidden="true"></i></a>
-                                        </div>
+
+                                            <div class="dropdown d-inline mr-2">
+                                                <button class="btn  btn-md btn-icon icon-right btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                  Export Soal <i class="fas fa-file-export"></i>
+                                                </button>
+                                                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                                  <a class="dropdown-item" href="{{ route('quiz.pdf', $quiz->id) }}">PDF</a>
+                                                  <a class="dropdown-item" href="{{ route('quiz.txt', $quiz->id) }}">Moodle (GIFT)</a>
+                                                </div>
+                                              </div>
+                                            {{-- <a href="#" class="btn btn-md btn-icon icon-right btn-success">Export <i class="fas fa-file-export"></i></a> --}}
+                                            <a href="{{ route('quiz.show', $quiz->id) }}" class="btn btn-md btn-icon icon-right btn-warning">Detail <i class="fa fa-eye" aria-hidden="true"></i></a>
+
                                     </td>
                                   </tr>
                                   @endforeach

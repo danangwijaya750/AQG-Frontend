@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\Quiz;
 use App\Models\Level;
+use App\Models\Question;
 use Auth;
+use Carbon\Carbon;
+use GuzzleHttp\Exception\ConnectException;
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
+use PDF;
 
 class QuizController extends Controller
 {
@@ -26,12 +31,12 @@ class QuizController extends Controller
     {
         //
         $user_id = Auth::user()->id;
-        $all = Quiz::where('user_id', $user_id)->where('is_save', 0)->get();
+        $all = Quiz::where('user_id', $user_id)->where('is_save', 1)->get();
         // dd($user_id);
         return view('quiz.index', compact('all'));
     }
 
-    public function search($request)
+    public function search(Request $request)
     {
         $lessons = [];
         if($request->has('q')){
@@ -51,7 +56,7 @@ class QuizController extends Controller
     public function create()
     {
         //
-        $all = Quiz::where('user_id', Auth::user()->id)->orderBy('created_at', 'asc')->paginate(10);
+        $all = Quiz::where('user_id', Auth::user()->id)->where('is_save',1)->orderBy('created_at', 'asc')->paginate(10);
         $lessons = Lesson::all();
         $class = Level::all();
 
@@ -94,12 +99,19 @@ class QuizController extends Controller
         // $quiz->save();
         $quiz_id = $quiz->id;
 
-        $base_url = 'http://34.121.75.4';
-        $response = Http::asForm()->post($base_url.'/generator', [
-            'materi' => $materi
-        ]);
+        try {
+            //code...
+            $base_url = 'http://34.121.75.4';
+            $response = Http::asForm()->post($base_url.'/generator', [
+                'materi' => $materi
+            ]);
 
-        $data = json_decode($response, true);
+            $data = json_decode($response, true);
+        } catch (ConnectionException $e) {
+            //throw $th;
+
+            return back()->withError($e->getMessage())->withInput();
+        }
 
         // dd($data[0]->q);
 
@@ -115,6 +127,59 @@ class QuizController extends Controller
     public function show($id)
     {
         //
+        $quiz = Quiz::where('id',$id)->first();
+        $lesson = Lesson::where('id', $quiz->lesson_id)->first();
+        $question = Question::where('quiz_id', $id)->get();
+
+        return view('quiz.show', compact('quiz', 'lesson', 'question'));
+    }
+
+    public function createPDF($id)
+    {
+        $quiz = Quiz::where('id',$id)->first();
+        $question = Question::where('quiz_id',$id)->get();
+        $pdf = PDF::loadview('quiz.quiz_pdf',['question'=>$question],['quiz'=>$quiz]);
+        return $pdf->download($quiz->title.'-'.Carbon::now().'.pdf');
+    }
+
+    public function createTxt($id){
+        $quiz = Quiz::where('id',$id)->first();
+        $questions = Question::where('quiz_id',$id)->get();
+        $deco = [];
+        $decode = collect(json_decode($questions,  true));
+        foreach ($decode as $d){
+            array_push($deco, $d['question']);
+        }
+        array_push($deco, " ");
+        $filetext = implode("{}\n",$deco);
+        $name = $quiz->title.'-'.Carbon::now().'.txt';
+        $headers = ['Content-type'=>'text/plain',
+        'Content-Disposition'=>sprintf('attachment; filename="%s"', $name),
+        ];
+
+        return response($filetext, 200, $headers);
+    }
+
+    public function save(Request $request)
+    {
+        // $quiz_id = Quiz::findOrFail('id', $id)->first();
+
+        $questions = $request->all();
+        // dd($questions);
+        $quiz_id = $request->quiz_id;
+        for($i = 0; $i < count($questions) - 2; $i++) {
+            $question = new Question;
+            $question->quiz_id = $quiz_id;
+            $question->question = $questions['question'.$i];
+            // $question->type = $questions['type'.$i];
+            $question->save();
+        }
+
+        $quiz = Quiz::where('id', $quiz_id)->first();
+        $quiz->is_save = 1;
+        $quiz->save();
+
+        return redirect()->route('quiz.index')->with('message', 'Soal Berhasil Disimpan');
     }
 
     /**
@@ -126,6 +191,7 @@ class QuizController extends Controller
     public function edit($id)
     {
         //
+
     }
 
     /**
@@ -155,18 +221,18 @@ class QuizController extends Controller
         //
         $data = session()->get('data');
         if (session()->has('data')) {
-            $quiz_id = Quiz::findOrFail($id)->get();
+            // $quiz_id = Quiz::findOrFail($id)->get();
             $quiz = Quiz::where('id', $id)->first();
             $lesson = Lesson::where('id', $quiz->lesson_id)->first();
 
             // dd($data);
-            return view('quiz.generated', compact('quiz_id','quiz','lesson','data'));
+            return view('quiz.generated', compact('quiz','lesson','data'));
         } else {
             return redirect()->route('quiz.create');
         }
 
-
     }
+
 
 
 }

@@ -17,9 +17,17 @@
                         <div class="card-header">
                             <h4>{{ $quiz->title }}</h4>
                             <div class="card-header-action">
-                              <a href="{{ route('quiz.create') }}" class="btn btn-primary">
-                                Simpan Soal
-                              </a>
+                                <form action="{{ route('quiz.save', $quiz->id) }}" method="POST">
+                                    <?php $no = 0; ?>
+                                    @csrf
+                                    @foreach ($data[0]['q'] as $d)
+                                        <input type="hidden" name="question{{ $no++ }}" value="{{ $d }}"/>
+                                    @endforeach
+                                    <input type="hidden" name="quiz_id" value="{{ $quiz->id }}">
+                                    <button type="submit" class="btn btn-primary">
+                                      Simpan Soal
+                                    </button>
+                                </form>
                             </div>
                           </div>
                         <div class="card-body">
@@ -51,24 +59,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <div class="d-flex align-items-start">
-                                            <img  src="{{ asset('img/kompetensi_inti.svg') }}">
-                                            <div>
-                                              <h6 class="mb-1 pl-3">Kompetensi Inti</h6>
-                                              <p class="mb-1 pl-3">3. Pengetahuan</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="d-flex align-items-start">
-                                            <img  src="{{ asset('img/KD.svg') }}">
-                                            <div>
-                                              <h6 class="mb-1 pl-3">Kompetensi Dasar</h6>
-                                              <p class="mb-1 pl-3">3.1 Menganalisis jaringan berbasis luas</p>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
 
@@ -81,27 +72,42 @@
                                         <li class="nav-item">
                                           <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">C2 (Memahami)</a>
                                         </li>
-                                        <li class="nav-item">
-                                          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">C3 (Mengaplikasikan)</a>
-                                        </li>
+
                                       </ul>
                                       <div class="col-md-8">
                                         <div class="tab-content" id="myTabContent">
                                             <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                             <ol>
-                                                @foreach ($data as $key => $value)
-                                                <li>
-                                                    {{ $value['q'] }}
-                                                </li>
-                                             @endforeach
-                                             </ol>
-                                            </div>
+                                            
+                                              @if ($quiz->type === 1)
+                                              Pilihan Ganda
+                                              @elseif($quiz->type === 2)
+                                              Isian Singkat
+                                              @endif
+                                              <br>
+                                                 <ol>
+                                                     @foreach ($data[0]['q'] as $d)
+                                                    <li>
+                                                        {{ $d }}
+                                                    </li>
+                                                    @endforeach
+                                                 </ol>
+                                                </div>
                                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                              Sed sed metus vel lacus hendrerit tempus. Sed efficitur velit tortor, ac efficitur est lobortis quis. Nullam lacinia metus erat, sed fermentum justo rutrum ultrices. Proin quis iaculis tellus. Etiam ac vehicula eros, pharetra consectetur dui. Aliquam convallis neque eget tellus efficitur, eget maximus massa imperdiet. Morbi a mattis velit. Donec hendrerit venenatis justo, eget scelerisque tellus pharetra a.
+                                                 @if ($quiz->type === 1)
+                                              Pilihan Ganda
+                                              @elseif($quiz->type === 2)
+                                              Isian Singkat
+                                              @endif
+                                              <br>
+                                                <ol>
+                                                    @foreach ($data[1]['q'] as $d)
+                                                    <li>
+                                                        {{ $d }}
+                                                    </li>
+                                                    @endforeach
+                                                </ol>
                                             </div>
-                                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                              Vestibulum imperdiet odio sed neque ultricies, ut dapibus mi maximus. Proin ligula massa, gravida in lacinia efficitur, hendrerit eget mauris. Pellentesque fermentum, sem interdum molestie finibus, nulla diam varius leo, nec varius lectus elit id dolor. Nam malesuada orci non ornare vulputate. Ut ut sollicitudin magna. Vestibulum eget ligula ut ipsum venenatis ultrices. Proin bibendum bibendum augue ut luctus.
-                                            </div>
+
                                           </div>
                                       </div>
                             </div>

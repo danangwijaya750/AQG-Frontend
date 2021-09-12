@@ -20,7 +20,7 @@ class CreateQuizTable extends Migration
             $table->integer('lesson_id');
             $table->integer('level_id');
             $table->string('title')->nullable();
-            $table->integer('length');
+            $table->integer('length')->nullable();
             $table->integer('type');
             $table->tinyInteger('is_save');
             $table->timestamps();
