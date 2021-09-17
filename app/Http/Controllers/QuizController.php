@@ -101,7 +101,7 @@ class QuizController extends Controller
 
         try {
             //code...
-            $base_url = 'http://34.134.75.179';
+            $base_url = 'http://35.239.111.176';
             $response = Http::asForm()->post($base_url.'/generator', [
                 'materi' => $materi
             ]);
