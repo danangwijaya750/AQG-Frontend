@@ -30,7 +30,8 @@
                             <div class="form-group col-md-12">
                                 <label>Materi</label>
                                 <textarea class="form-control summernote-simple" name="desc" placeholder="Masukkan Paragraf Materi" ></textarea>
-                              </div>
+                                <small>*Minimal 50 huruf</small>
+                            </div>
 
                             <div class="form-row col-md-12">
                                 <div class="form-group col-md-6">
@@ -68,7 +69,7 @@
                                         <input type="radio" id="sharing" name="is_sharing" value="0" class="selectgroup-input">
                                         <span class="selectgroup-button">Tidak</span>
                                     </label>
-
+                                    <small>*Materi yang dibagikan akan tampil di halaman depan dan bisa dilihat oleh semua orang</small>
 
                                 </div>
                             </div>

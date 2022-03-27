@@ -109,7 +109,7 @@
 
                                                 </div>
                                                 @endforeach
-                                                <small style="font-size:14px;color:red;">*Soal dapat diedit dengan klik pada baris</small>
+                                                <small style="font-size:14px;color:red;">*Klik pada baris untuk edit soal</small>
                                               </div>
                                           </div>
                                 </div>

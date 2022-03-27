@@ -29,9 +29,10 @@
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label>Materi</label>
+                                <label>Paragraf Materi</label>
                                 <textarea id="lesson_text" class="form-control summernote-simple" name="lesson" placeholder="Masukkan Paragraf Materi"></textarea>
-                              </div>
+                                <small>*Minimal 50 huruf</small>
+                            </div>
                               {{-- <div class="form-group col-md-12">
                                 <label for="studies">Atau Materi Anda</label>
                                 <select id="studies" name="study_id" class="form-control select2">
@@ -77,6 +78,7 @@
                                         <span class="selectgroup-button">Tidak</span>
                                     </label>
                                 </div>
+                                <small>*Soal yang dibagikan akan tampil di halaman depan dan bisa dilihat oleh semua orang</small>
                             </div>
                             </div>
                             <div class="card-footer text-right">
