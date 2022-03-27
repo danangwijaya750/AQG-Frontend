@@ -126,6 +126,7 @@
 
                                             </div>
                                             @endforeach
+                                            <small style="font-size:14px;color:red;">*Soal dapat diedit dengan klik pada bari</small>
 
                                           </div>
                                       </div>
@@ -170,7 +171,7 @@
         $('#save_btn').on("click", function(){
                 $(this).addClass("btn-progress")
         });
-        
+
         $('input[type=radio][name=level_id]').on('change', function (){
                 var levelId = $(this).val();
 
