@@ -114,7 +114,7 @@
 
                                             </div>
                                             @endforeach
-                                            <small style="font-size:14px;color:red;">*Soal dapat diedit dengan klik pada bari</small>
+                                            <small style="font-size:14px;color:red;">*Soal dapat diedit dengan klik pada baris</small>
                                           </div>
                                       </div>
                             </div>
