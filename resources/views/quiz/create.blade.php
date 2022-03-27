@@ -28,7 +28,7 @@
                             <input type="text" class="form-control" name="title" placeholder="Isikan Judul Soal">
                             </div>
 
-                            <div class="form-group col-md-12">
+                            {{-- <div class="form-group col-md-12">
                                 <label>Materi</label>
                                 <textarea id="lesson_text" class="form-control summernote-simple" name="lesson" placeholder="Masukkan Paragraf Materi"></textarea>
                               </div>
@@ -40,7 +40,7 @@
                                     <option value="{{ $l->id }}">{{ $l->title }}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div> --}}
 
                               <div class="form-row col-md-12">
                                 <div class="form-group col-md-6">

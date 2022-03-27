@@ -23,7 +23,10 @@ use App\Http\Controllers\LandingController;
 |
 */
 
-Route::get('/', [LandingController::class, 'index']);
+Route::get('/landing', [LandingController::class, 'index']);
+Route::get('/', function(){
+    return view('auth.login');
+});
 Route::get('/quiz/{id}/detail', [LandingController::class, 'edit'])->name('quiz.detail');
 
 Route::group([
