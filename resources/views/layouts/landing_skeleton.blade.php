@@ -23,13 +23,13 @@
 
     {{-- External CSS --}}
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('landing/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('landing/css/landing-font-awesome.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('plugins/owlcarousel/owl.carousel.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('landing/css/style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('landing/css/custom.css') }}" />
-    <link rel="stylesheet" href="{{ asset('landing/css/accordion.css') }}" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" type="text/css">
+    <link type="text/css" href="{{ asset('landing/css/bootstrap.min.css') }}" />
+    <link type="text/css" href="{{ asset('landing/css/landing-font-awesome.min.css') }}" />
+    <link type="text/css" href="{{ asset('plugins/owlcarousel/owl.carousel.min.css') }}" />
+    <link type="text/css" href="{{ asset('landing/css/style.css') }}" />
+    <link type="text/css" href="{{ asset('landing/css/custom.css') }}" />
+    <link type="text/css" href="{{ asset('landing/css/accordion.css') }}" />
     @stack('stylesheet')
 </head>
 
