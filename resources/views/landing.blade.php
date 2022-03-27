@@ -61,7 +61,7 @@
 
                                 {{-- Banner Image --}}
                                 <div class="col-lg-6 order-first order-lg-last">
-                                    <img class="pt-4" width="100%" src="https://ahsanf.github.io/AQG-Frontend/public/assets/landing/img/landing.png"
+                                    <img class="pt-4" width="100%" src="https://ahsanf.github.io/AQG-Frontend/public/img/landing.png"
                                         alt="" />
                                 </div>
 
@@ -94,7 +94,7 @@
             <div class="row justify-content-between align-items-center pb-10" data-aos="fade-up" data-aos-anchor="#app">
                 <div class="col-lg-5">
                     <div class="mb-50 mb-lg-0">
-                        <img src="https://ahsanf.github.io/AQG-Frontend/public/assets/landing/img/desc.png" alt="" />
+                        <img src="https://ahsanf.github.io/AQG-Frontend/public/img/desc.png" alt="" />
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -163,7 +163,7 @@
                 </div>
             @else
                 <div class="empty-state text-center">
-                    <img src="https://ahsanf.github.io/AQG-Frontend/public/assets/landing/img/empty_info.png" alt="" srcset="">
+                    <img src="https://ahsanf.github.io/AQG-Frontend/public/img/empty_info.png" alt="" srcset="">
                     <h4 class="pt-2">Saat ini belum ada pertanyaan yang dibagikan.</h4>
                 </div>
             @endif
@@ -219,7 +219,7 @@
                 </div>
             @else
                 <div class="empty-state text-center">
-                    <img src="https://ahsanf.github.io/AQG-Frontend/public/assets/landing/img/empty_info.png" alt="" srcset="">
+                    <img src="https://ahsanf.github.io/AQG-Frontend/public/img/empty_info.png" alt="" srcset="">
                     <h4 class="pt-2">Saat ini belum ada materi yang dibagikan.</h4>
                 </div>
             @endif
@@ -364,7 +364,7 @@
                 <div class="col-lg-6 col-sm-6">
                     <div class="widget widget_about">
                         <div class="widget-logo">
-                            <img src="https://ahsanf.github.io/AQG-Frontend/public/assets/landing/img/logo_white.svg" data-rjs="2" alt="" />
+                            <img src="https://ahsanf.github.io/AQG-Frontend/public/img/logo_white.svg" data-rjs="2" alt="" />
                         </div>
 
                         <div style="padding-bottom: 10px"><b style="color: white; font-size: 24px">Automatic Question Generator</b></div>
