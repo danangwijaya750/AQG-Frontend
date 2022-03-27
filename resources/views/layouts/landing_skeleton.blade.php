@@ -41,15 +41,15 @@
 
     <a href="#app" class="back-to-top"> <i class="fa fa-angle-up"></i> </a>
 
-    <script src="{{ asset('/assets/landing/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('/assets/landing/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('/assets/landing/js/menu.min.js') }}"></script>
-    <script src="{{ asset('plugins/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('plugins/retinajs/retina.min.js') }}"></script>
-    <script src="{{ asset('/assets/landing/js/main.js') }}"></script>
-    <script src="{{ asset('/assets/landing/js/accordion.js') }}"></script>
-    <script src="{{ asset('/assets/landing/js/custom.js') }}"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="{{ asset('/assets/landing/js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/landing/js/bootstrap.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/landing/js/menu.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('plugins/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('plugins/retinajs/retina.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/landing/js/main.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/landing/js/accordion.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/landing/js/custom.js') }}"></script>
+    <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         $(document).ready(function() {
             AOS.init();
