@@ -9,6 +9,7 @@ use Illuminate\Http\Response;
 use App\Models\Quiz;
 use App\Models\Level;
 use App\Models\Question;
+use App\Models\Studies;
 use Carbon\Carbon;
 use GuzzleHttp\Exception\ConnectException;
 use Illuminate\Contracts\Session\Session;
@@ -60,6 +61,7 @@ class QuizController extends Controller
         $data['quiz'] = Quiz::where('user_id', Auth::user()->id)->orderBy('created_at', 'asc')->paginate(10);
         $data['lessons'] = Lesson::all()->load('level');
         $data['levels'] = Level::get();
+        $data['studies'] = Studies::where('user_id',Auth::user()->id )->get();
 
         return view('quiz.create', compact('data'));
     }

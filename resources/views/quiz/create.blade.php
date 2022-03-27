@@ -30,8 +30,17 @@
 
                             <div class="form-group col-md-12">
                                 <label>Materi</label>
-                                <textarea class="form-control summernote-simple" name="lesson" placeholder="Masukkan Paragraf Materi"></textarea>
+                                <textarea id="lesson_text" class="form-control summernote-simple" name="lesson" placeholder="Masukkan Paragraf Materi"></textarea>
                               </div>
+                              <div class="form-group col-md-12">
+                                <label for="studies">Atau Materi Anda</label>
+                                <select id="studies" name="study_id" class="form-control select2">
+                                    <option disabled selected>Pilih Materi</option>
+                                    @foreach($data['studies'] as $l)
+                                    <option value="{{ $l->id }}">{{ $l->title }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
                               <div class="form-row col-md-12">
                                 <div class="form-group col-md-6">
@@ -151,6 +160,23 @@
                             } else {
                                 $('#lesson').empty();
                             }
+                        }
+                    });
+                }
+            });
+
+            $('input[type=radio][name=study_id]').on('change', function (){
+                var studyId = $(this).val();
+
+                if(studyId){
+                    $.ajax({
+                        url: '/filter/study/'+studyId,
+                        type: "GET",
+                        data : {"_token":"{{ csrf_token() }}"},
+                        dataType: "json",
+                        success:function(data){
+                            console.log(data);
+                            $('#lesson_text').val(data.desc);
                         }
                     });
                 }

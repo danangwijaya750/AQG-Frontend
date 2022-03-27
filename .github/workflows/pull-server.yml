@@ -18,4 +18,5 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           cd AQG-Frontend/
-          git pull
+          git pull origin main
+          php artisan optimize

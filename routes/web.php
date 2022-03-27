@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminLevelController;
 use App\Http\Controllers\AdminLessonController;
 use App\Http\Controllers\AdminStudyController;
 use App\Http\Controllers\ExportController;
+use App\Http\Controllers\LandingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,8 @@ use App\Http\Controllers\ExportController;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+Route::get('/', [LandingController::class, 'index']);
+Route::get('/quiz/{id}/detail', [LandingController::class, 'edit'])->name('quiz.detail');
 
 Route::group([
     'middleware' => ['auth', 'role:user']
@@ -44,8 +44,7 @@ Route::group([
     Route::get('filter/lesson/{level_id}', [FilterController::class, 'getLesson'])->name('get.lesson');
     Route::get('/quiz/{id}/pdf', [ExportController::class, 'exportPDF'])->name('quiz.pdf');
     Route::get('/study/{id}/pdf', [ExportController::class, 'exportStudyPDF'])->name('study.pdf');
-
-
+    Route::get('filter/study/{user_id}', [FilterController::class, 'getStudy'])->name('get.study');
 
 });
 
