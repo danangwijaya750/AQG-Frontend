@@ -25,11 +25,11 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://ahsanf.github.io/AQG-Frontend/public/assets/landing/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="{{ asset('landing/css/landing-font-awesome.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('plugins/owlcarousel/owl.carousel.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('landing/css/style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('landing/css/custom.css') }}" />
-    <link rel="stylesheet" href="{{ asset('landing/css/accordion.css') }}" />
+    <link rel="stylesheet" type="text/css" href="https://ahsanf.github.io/AQG-Frontend/public/assets/landing/css/landing-font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://ahsanf.github.io/AQG-Frontend/public/plugins/owlcarousel/owl.carousel.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://ahsanf.github.io/AQG-Frontend/public/assets/landing/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://ahsanf.github.io/AQG-Frontend/public/assets/landing/css/custom.css" />
+
     @stack('stylesheet')
 </head>
 
@@ -41,14 +41,13 @@
 
     <a href="#app" class="back-to-top"> <i class="fa fa-angle-up"></i> </a>
 
-    <script src="{{ asset('landing/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('landing/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('landing/js/menu.min.js') }}"></script>
-    <script src="{{ asset('plugins/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('plugins/retinajs/retina.min.js') }}"></script>
-    <script src="{{ asset('landing/js/main.js') }}"></script>
-    <script src="{{ asset('landing/js/accordion.js') }}"></script>
-    <script src="{{ asset('landing/js/custom.js') }}"></script>
+    <script src="https://ahsanf.github.io/AQG-Frontend/public/assets/landing/js/jquery.min.js"></script>
+    <script src="https://ahsanf.github.io/AQG-Frontend/public/assets/landing/js/menu.min.js"></script>
+    <script src="https://ahsanf.github.io/AQG-Frontend/public/plugins/owlcarousel/owl.carousel.min.js"></script>
+    <script src="https://ahsanf.github.io/AQG-Frontend/public/plugins/retinajs/retina.min.js"></script>
+    <script src="https://ahsanf.github.io/AQG-Frontend/public/assets/landing/js/main.js"></script>
+    <script src="https://ahsanf.github.io/AQG-Frontend/public/assets/landing/js/accordion.js"></script>
+    <script src="https://ahsanf.github.io/AQG-Frontend/public/assets/landing/js/custom.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         $(document).ready(function() {
