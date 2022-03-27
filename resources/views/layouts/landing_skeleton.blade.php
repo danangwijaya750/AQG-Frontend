@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <base href="/">
     {{-- <link rel="shortcut icon" href="{{ asset('img/logo.svg') }}" /> --}}
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,14 +22,14 @@
         rel="stylesheet">
 
     {{-- External CSS --}}
-    <link rel="stylesheet" itemprop="url"  type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" itemprop="url"  type="text/css" href="{{ asset('assets/landing/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" itemprop="url"  type="text/css" href="{{ asset('assets/landing/css/landing-font-awesome.min.css') }}" />
-    <link rel="stylesheet" itemprop="url"  type="text/css" href="{{ asset('plugins/owlcarousel/owl.carousel.min.css') }}" />
-    <link rel="stylesheet" itemprop="url"  type="text/css" href="{{ asset('assets/landing/css/style.css') }}" />
-    <link rel="stylesheet" itemprop="url"  type="text/css" href="{{ asset('assets/landing/css/custom.css') }}" />
-    <link rel="stylesheet" itemprop="url"  type="text/css" href="{{ asset('assets/landing/css/accordion.css') }}" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://ahsanf.github.io/AQG-Frontend/public/assets/landing/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="{{ asset('landing/css/landing-font-awesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('plugins/owlcarousel/owl.carousel.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('landing/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('landing/css/custom.css') }}" />
+    <link rel="stylesheet" href="{{ asset('landing/css/accordion.css') }}" />
     @stack('stylesheet')
 </head>
 
@@ -42,15 +41,15 @@
 
     <a href="#app" class="back-to-top"> <i class="fa fa-angle-up"></i> </a>
 
-    <script type="text/javascript" src="{{ asset('assets/landing/js/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/landing/js/bootstrap.bundle.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/landing/js/menu.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('plugins/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('plugins/retinajs/retina.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/landing/js/main.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/landing/js/accordion.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/landing/js/custom.js') }}"></script>
-    <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{{ asset('landing/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('landing/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('landing/js/menu.min.js') }}"></script>
+    <script src="{{ asset('plugins/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('plugins/retinajs/retina.min.js') }}"></script>
+    <script src="{{ asset('landing/js/main.js') }}"></script>
+    <script src="{{ asset('landing/js/accordion.js') }}"></script>
+    <script src="{{ asset('landing/js/custom.js') }}"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         $(document).ready(function() {
             AOS.init();
