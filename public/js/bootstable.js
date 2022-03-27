@@ -1,9 +1,3 @@
-/*
-Bootstable
- @description  Javascript library to make HMTL tables editable, using Bootstrap
- @version 1.1
- @autor Tito Hinostroza
-*/
 "use strict";
 //Global variables
 var params = null;  		//Parameters
@@ -15,10 +9,10 @@ var newColHtml = '<div class="btn-group pull-right">'+
 '<button id="bElim" type="button" class="btn btn-sm btn-default" onclick="butRowDelete(this);">' +
 '<span class="glyphicon glyphicon-trash" > </span>'+
 '</button>'+
-'<button id="bAcep" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="butRowAcep(this);">' + 
+'<button id="bAcep" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="butRowAcep(this);">' +
 '<span class="glyphicon glyphicon-ok" > </span>'+
 '</button>'+
-'<button id="bCanc" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="butRowCancel(this);">' + 
+'<button id="bCanc" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="butRowCancel(this);">' +
 '<span class="glyphicon glyphicon-remove" > </span>'+
 '</button>'+
   '</div>';
@@ -30,14 +24,14 @@ var newColHtml = '<div class="btn-group pull-right">'+
   '<button id="bElim" type="button" class="btn btn-sm btn-default" onclick="butRowDelete(this);">' +
   '<span class="glyphicon glyphicon-trash" > X </span>'+
   '</button>'+
-  '<button id="bAcep" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="butRowAcep(this);">' + 
+  '<button id="bAcep" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="butRowAcep(this);">' +
   '<span class="glyphicon glyphicon-ok" > ✓ </span>'+
   '</button>'+
-  '<button id="bCanc" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="butRowCancel(this);">' + 
+  '<button id="bCanc" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="butRowCancel(this);">' +
   '<span class="glyphicon glyphicon-remove" > → </span>'+
   '</button>'+
     '</div>';
-var colEdicHtml = '<td name="buttons">'+newColHtml+'</td>'; 
+var colEdicHtml = '<td name="buttons">'+newColHtml+'</td>';
 $.fn.SetEditable = function (options) {
   var defaults = {
       columnsEd: null,         //Index to editable columns. If null all td editables. Ex.: "1,2,3,4,5"
@@ -52,7 +46,7 @@ $.fn.SetEditable = function (options) {
   var $tabedi = this;   //Read reference to the current table.
   $tabedi.find('thead tr').append('<th name="buttons"></th>');  //Add empty column
   if (!params.bootstrap) {
-    colEdicHtml = '<td name="buttons">'+newColHtml2+'</td>'; 
+    colEdicHtml = '<td name="buttons">'+newColHtml2+'</td>';
   }
   //Add column for buttons to all rows.
   $tabedi.find('tbody tr').append(colEdicHtml);
@@ -78,7 +72,7 @@ function IterarCamposEdit($cols, action) {
       if (!IsEditable(n-1)) return;   //It's not editable
       action($(this));
   });
-  
+
   function IsEditable(idx) {
   //Indicates if the passed column is set to be editable
       if (colsEdi==null) {  //no se definió
@@ -141,7 +135,7 @@ function butRowCancel(but) {
   });
   SetButtonsNormal(but);
 }
-function butRowEdit(but) {  
+function butRowEdit(but) {
   //Start the edition mode for a row.
   var $row = $(but).parents('tr');  //accede a la fila
   var $cols = $row.find('td');  //lee campos
@@ -151,7 +145,7 @@ function butRowEdit(but) {
   IterarCamposEdit($cols, function($td) {  //itera por la columnas
       var cont = $td.html(); //lee contenido
       //Save previous content in a hide <div>
-      var div  = '<div style="display: none;">' + cont + '</div>';  
+      var div  = '<div style="display: none;">' + cont + '</div>';
       var input= '<input class="form-control input-sm"  value="' + cont + '">';
       $td.html(div + input);  //Set new content
       //Set focus to first column
@@ -169,11 +163,11 @@ function butRowDelete(but) {  //Elimina la fila actual
   params.onDelete();
 }
 //Functions that can be called directly
-function rowAddNew(tabId, initValues=[]) {  
-  /* Add a new row to a editable table. 
-   Parameters: 
+function rowAddNew(tabId, initValues=[]) {
+  /* Add a new row to a editable table.
+   Parameters:
     tabId       -> Id for the editable table.
-    initValues  -> Optional. Array containing the initial value for the 
+    initValues  -> Optional. Array containing the initial value for the
                    new row.
   */
   var $tab_en_edic = $("#"+tabId);  //Table to edit
@@ -202,7 +196,7 @@ function rowAddNew(tabId, initValues=[]) {
   /*} else {
       //Hay otras filas, podemos clonar la última fila, para copiar los botones
       var $lastRow = $tab_en_edic.find('tr:last');
-      $lastRow.clone().appendTo($lastRow.parent());  
+      $lastRow.clone().appendTo($lastRow.parent());
       $lastRow = $tab_en_edic.find('tr:last');
       var $cols = $lastRow.find('td');  //lee campos
       $cols.each(function() {
@@ -216,7 +210,7 @@ function rowAddNew(tabId, initValues=[]) {
   params.onAdd();
 }
 function rowAddNewAndEdit(tabId, initValues=[]) {
-/* Add a new row an set edition mode */  
+/* Add a new row an set edition mode */
   rowAddNew(tabId, initValues);
   var $lastRow = $('#'+tabId + ' tr:last');
   butRowEdit($lastRow.find('#bEdit'));  //Pass a button reference
@@ -240,7 +234,7 @@ function TableToCSV(tabId, separator) {  //Convert table to CSV
           }
       });
       if (datFil!='') {
-          datFil = datFil.substr(0, datFil.length-separator.length); 
+          datFil = datFil.substr(0, datFil.length-separator.length);
       }
       tmp = tmp + datFil + '\n';
   });
@@ -249,7 +243,7 @@ function TableToCSV(tabId, separator) {  //Convert table to CSV
 function TableToJson(tabId) {   //Convert table to JSON
   var json = '{';
   var otArr = [];
-  var tbl2 = $('#'+tabId+' tr').each(function(i) {        
+  var tbl2 = $('#'+tabId+' tr').each(function(i) {
      var x = $(this).children();
      var itArr = [];
      x.each(function() {

@@ -23,7 +23,7 @@ use App\Http\Controllers\ExportController;
 */
 
 Route::get('/', function () {
-    return view('landing');
+    return view('auth.login');
 });
 
 Route::group([
