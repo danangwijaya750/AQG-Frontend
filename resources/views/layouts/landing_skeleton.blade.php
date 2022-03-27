@@ -24,12 +24,12 @@
     {{-- External CSS --}}
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" type="text/css">
-    <link type="text/css" href="{{ asset('landing/css/bootstrap.min.css') }}" />
-    <link type="text/css" href="{{ asset('landing/css/landing-font-awesome.min.css') }}" />
-    <link type="text/css" href="{{ asset('plugins/owlcarousel/owl.carousel.min.css') }}" />
-    <link type="text/css" href="{{ asset('landing/css/style.css') }}" />
-    <link type="text/css" href="{{ asset('landing/css/custom.css') }}" />
-    <link type="text/css" href="{{ asset('landing/css/accordion.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/landing/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/landing/css/landing-font-awesome.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/owlcarousel/owl.carousel.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/landing/css/style.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/landing/css/custom.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/landing/css/accordion.css') }}" />
     @stack('stylesheet')
 </head>
 
@@ -41,14 +41,14 @@
 
     <a href="#app" class="back-to-top"> <i class="fa fa-angle-up"></i> </a>
 
-    <script src="{{ asset('landing/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('landing/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('landing/js/menu.min.js') }}"></script>
+    <script src="{{ asset('assets/landing/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/landing/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/landing/js/menu.min.js') }}"></script>
     <script src="{{ asset('plugins/owlcarousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('plugins/retinajs/retina.min.js') }}"></script>
-    <script src="{{ asset('landing/js/main.js') }}"></script>
-    <script src="{{ asset('landing/js/accordion.js') }}"></script>
-    <script src="{{ asset('landing/js/custom.js') }}"></script>
+    <script src="{{ asset('assets/landing/js/main.js') }}"></script>
+    <script src="{{ asset('assets/landing/js/accordion.js') }}"></script>
+    <script src="{{ asset('assets/landing/js/custom.js') }}"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         $(document).ready(function() {
