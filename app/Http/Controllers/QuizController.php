@@ -77,7 +77,7 @@ class QuizController extends Controller
             'level_id' => 'required',
             'lesson_id' => 'required',
             'is_sharing' => 'required',
-            'lesson' => 'required'
+            'lesson' => 'required|min:50'
         ]);
 
         if ($validator->fails()) {

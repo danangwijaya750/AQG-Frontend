@@ -51,61 +51,70 @@
 
                                 </div>
                             </div>
+                            <div class="row mt-4">
+                                <div class="col-md-8">
+                                    <label>Materi</label>
+                                    <textarea class="form-control summernote-simple" name="lesson" placeholder="Masukkan Paragraf Materi">{{ $data['quiz']['data']['lesson'] }}</textarea>
+                                  </div>
+                            </div>
                                 <form action="{{ route('quiz.save', ['id' => $data['quiz']['data']['user_id'], 'hash' => $data['quiz']['data']['hash']]) }}" method="post">
                                 <input type="hidden" name="user_id" value="{{ $data['quiz']['data']['user_id'] }}">
                                 <input type="hidden" name="title" value="{{ $data['quiz']['data']['title']}}">
                                 <input type="hidden" name="is_sharing" value="{{ $data['quiz']['data']['is_sharing']}}">
                                 <input type="hidden" name="lesson_id" value="{{ $data['quiz']['data']['lesson_id'] }}">
-                                    @csrf
-                                <div class="col-md-12 mt-4">
-                                    <label class="control-label">Klasifikasi Soal <i class="fas fa-info-circle   "></i></label>
-                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                        @foreach ($data['quiz']['questions'] as $key => $question)
-                                            <li class="nav-item">
-                                                <a class="nav-link @if($loop->first) active show @endif" id="{{ $question['c'] }}-tab" data-toggle="tab" href="#{{ $question['c'] }}" role="tab" aria-controls="{{ $question['c'] }}" aria-selected="true">{{ $question['name'] }}</a>
-                                                <input type="hidden" name="questions[{{ $key }}][name]" value="{{ $question['name'] }}">
-                                            </li>
-                                        @endforeach
-
-                                      </ul>
-                                      <div class="col-md-12">
-                                        <div class="tab-content" id="myTabContent">
-                                            <div class="input-group mt-4 mb-2">
-                                                <input type="text" class="form-control" id="soal" placeholder="Masukkan soal" aria-label="">
-
-                                                <div class="input-group-append">
-                                                  <button class="btn btn-primary" id="add-row" type="button">Tambah Soal</button>
-                                                </div>
-                                              </div>
-                                              {{-- {{ dd($data['quiz']) }} --}}
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-12 mt-4">
+                                        <label class="control-label">Klasifikasi Soal <i class="fas fa-info-circle   "></i></label>
+                                        <ul class="nav nav-tabs" id="myTab" role="tablist">
                                             @foreach ($data['quiz']['questions'] as $key => $question)
-                                            <input type="hidden" name="questions[{{ $key }}][c]" value="{{ $question['c'] }}">
-                                            <div class="tab-pane fade @if($loop->first) active show @endif" id="{{ $question['c'] }}" role="tabpanel" aria-labelledby="{{ $question['c'] }}-tab">
-                                                    <table class="table table-striped" id="question_table">
-                                                      <tbody><tr>
-                                                        <th width="40%">Soal</th>
-
-                                                        <th width="10%">Aksi</th>
-                                                      </tr>
-                                                    {{-- {{ dd($question['q']) }} --}}
-                                                      @foreach ( $question['q'] as $question_key => $q )
-                                                      <tr id="question-{{ $key }}-{{ $question_key }}">
-                                                        <td>
-                                                            <input class="no-border" type="text" name="questions[{{ $key }}][q][{{ $question_key }}]" value="{{ $q }}">
-                                                        </td>
-
-                                                        <td><a onclick="deleteRow({{ $key }},{{ $question_key }})" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-                                                      </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-
-                                            </div>
+                                                <li class="nav-item">
+                                                    <a class="nav-link @if($loop->first) active show @endif" id="{{ $question['c'] }}-tab" data-toggle="tab" href="#{{ $question['c'] }}" role="tab" aria-controls="{{ $question['c'] }}" aria-selected="true">{{ $question['name'] }}</a>
+                                                    <input type="hidden" name="questions[{{ $key }}][name]" value="{{ $question['name'] }}">
+                                                </li>
                                             @endforeach
 
+                                          </ul>
+                                          <div class="col-md-12">
+                                            <div class="tab-content" id="myTabContent">
+                                                <div class="input-group mt-4 mb-2">
+                                                    <input type="text" class="form-control" id="soal" placeholder="Masukkan soal" aria-label="">
+
+                                                    <div class="input-group-append">
+                                                      <button class="btn btn-primary" id="add-row" type="button">Tambah Soal</button>
+                                                    </div>
+                                                  </div>
+                                                  {{-- {{ dd($data['quiz']) }} --}}
+                                                @foreach ($data['quiz']['questions'] as $key => $question)
+                                                <input type="hidden" name="questions[{{ $key }}][c]" value="{{ $question['c'] }}">
+                                                <div class="tab-pane fade @if($loop->first) active show @endif" id="{{ $question['c'] }}" role="tabpanel" aria-labelledby="{{ $question['c'] }}-tab">
+                                                        <table class="table table-striped" id="question_table">
+                                                          <tbody><tr>
+                                                            <th width="40%">Soal</th>
+
+                                                            <th width="10%">Aksi</th>
+                                                          </tr>
+                                                        {{-- {{ dd($question['q']) }} --}}
+                                                          @foreach ( $question['q'] as $question_key => $q )
+                                                          <tr id="question-{{ $key }}-{{ $question_key }}">
+                                                            <td>
+                                                                <input class="no-border" type="text" name="questions[{{ $key }}][q][{{ $question_key }}]" value="{{ $q }}">
+                                                            </td>
+
+                                                            <td><a onclick="deleteRow({{ $key }},{{ $question_key }})" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                                          </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                                @endforeach
+
+                                              </div>
                                           </div>
-                                      </div>
-                            </div>
+                                </div>
+                                </div>
+
                         </div>
                         <div class="card-footer text-right">
                             <button type="submit" id="save_btn" class="btn btn-primary btn-icon icon-right">
