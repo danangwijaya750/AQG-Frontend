@@ -11,105 +11,75 @@
             <h2 class="section-title">Generate Soal</h2>
             <p class="section-lead">Isi form dibawah untuk membuat soal.</p>
             <div class="row col-lg-12">
-                <div class="col-lg-8">
+                <div class="col-lg-7 col-md-7 col-sm-12">
                     <div class="card">
                         <div class="card-header container-fluid">
-                            <div class="col-md-12">
-                                <h4>Form Isian</h4>
-                            </div>
+                        <div class="col-md-12">
+                            <h4>Form Isian</h4>
+                        </div>
                         </div>
 
                         <div class="card-body">
-                        @if (session('error'))
-                        <div class="alert alert-danger alert-dismissible show fade" role="alert">{{ session('error') }}
 
-                        </div>
-                        @endif
-                                <form method="POST" action="{{ route('quiz.store') }}">
-                                @csrf
-                                <div class="form-group col-md-12">
-                                <label for="lesson">Judul Soal</label>
-                                <input type="text" class="form-control" name="title" placeholder="Isikan Judul Soal">
+                        <form method="POST" action="{{ route('quiz.store') }}">
+                            @csrf
+                            <div class="form-group col-md-12">
+                            <label for="lesson">Judul Soal</label>
+                            <input type="text" class="form-control" name="title" placeholder="Isikan Judul Soal">
                             </div>
+
                             <div class="form-group col-md-12">
                                 <label>Materi</label>
-                                <textarea class="form-control" name="materi" placeholder="Masukkan Paragraf Materi" style="margin-top: 0px; margin-bottom: 0px; height: 122px;"></textarea>
+                                <textarea class="form-control summernote-simple" name="lesson" placeholder="Masukkan Paragraf Materi"></textarea>
                               </div>
-                            <div class="form-group col-md-6">
+
+                              <div class="form-row col-md-12">
+                                <div class="form-group col-md-6">
                                     <label class="form-label">Tingkat Pendidikan</label>
                                     <div class="selectgroup w-100">
-                                    <label class="selectgroup-item">
-                                        <input type="radio" name="level" value="1" class="selectgroup-input">
-                                        <span class="selectgroup-button">SD</span>
-                                    </label>
-                                    <label class="selectgroup-item">
-                                        <input type="radio" name="level" value="2" class="selectgroup-input">
-                                        <span class="selectgroup-button">SMP</span>
-                                    </label>
-                                    <label class="selectgroup-item">
-                                        <input type="radio" name="level" value="3" class="selectgroup-input">
-                                        <span class="selectgroup-button">SMA</span>
-                                    </label>
-                                    <label class="selectgroup-item">
-                                        <input type="radio" name="level" value="4" class="selectgroup-input">
-                                        <span class="selectgroup-button">SMK</span>
-                                    </label>
-                                    </div>
-                            </div>
-
-                            <div class="form-row col-md-12">
-                                <div class="form-group col-md-10">
-                                    <label for="select2-lesson">Mata Pelajaran</label>
-                                    <select id="select2-lesson" name="lesson" class="form-control">
-                                        <option disabled selected>Pilih Mata Pelajaran</option>
-                                        @foreach($lessons as $l)
-                                        <option value="{{ $l->id }}">{{ $l->title }}</option>
+                                        @foreach ($data['levels'] as $level)
+                                        <label class="selectgroup-item">
+                                            <input type="radio" id="level{{ $level['id'] }}" name="level_id" value="{{ $level['id'] }}" class="selectgroup-input">
+                                            <span class="selectgroup-button">{{ $level['title'] }}</span>
+                                        </label>
                                         @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <label for="class">Kelas</label>
-                                    <select id="" name="class" class="form-control">
-                                    <option disabled selected>Pilih Kelas</option>
-                                    @foreach ($class as $c)
-                                    <option value="{{ $c->id }}">{{ $c->class }} - {{ $c->title }}</option>
 
-                                    @endforeach
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="lesson">Mata Pelajaran</label>
+                                    <select id="lesson" name="lesson_id" class="form-control select2">
+                                        <option disabled selected>Pilih Tingkat Pendidikan Dahulu</option>
+                                        {{-- @foreach($data['lessons'] as $l)
+                                        <option value="{{ $l->id }}">{{ $l->title }}</option>
+                                        @endforeach --}}
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-row col-md-12">
-                                <div class="form-group col-md-5">
-                                    <label for="">Jenis Pertanyaan</label>
-                                    <div class="selectgroup w-100">
+                            <div class="form-group col-md-6">
+                                <label class="form-label">Bagikan Soal ?</label>
+                                <div class="selectgroup w-100">
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="type" value="2" class="selectgroup-input">
-                                        <span class="selectgroup-button">Isian Singkat</span>
+                                        <input type="radio" name="is_sharing" value="1" class="selectgroup-input">
+                                        <span class="selectgroup-button">Ya</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="type" value="1" class="selectgroup-input">
-                                        <span class="selectgroup-button">Pilihan Ganda</span>
+                                        <input type="radio" name="is_sharing" value="0" class="selectgroup-input">
+                                        <span class="selectgroup-button">Tidak</span>
                                     </label>
-                                    </div>
-                                    </div>
-                                    {{-- <div class="form-group col-md-1">
-
-                                    <label for="">Jumlah</label>
-                                    <input style="height: calc(1.5em + .5rem + 6px);" type="number" name="length" class="form-control form-control-sm" placeholder="0">
-                                    <input type="number" name="" id="" class="form-control" placeholder="">
-                                    </div> --}}
-
                                 </div>
                             </div>
-
+                            </div>
                             <div class="card-footer text-right">
                                 <button id="btn_generate" class="btn btn-icon icon-right btn-primary" type="submit">Generate Soal <i class="fas fa-book-open    "></i></button>
+                                <a href="{{ route('quiz.index') }}" class="btn btn-outline-danger">Batal</a>
                             </div>
+                            <input type="hidden" id="lesson_name" name="lesson_name" value="">
                             </form>
                         </div>
 
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
                         <div class="card">
                             <div class="card-header container-fluid">
                                 <div class="col-md-12">
@@ -130,17 +100,17 @@
                                         <th scope="col" width="3%">No</th>
                                         <th scope="col">Judul Soal</th>
                                         <th scope="col">Dibuat Pada</th>
-                                        <th scope="col"></th>
+                                        <th scope="col"  width="3%"></th>
                                       </tr>
                                     </thead>
                                     <tbody>
-                                    <?php $no=1; ?>
-                                    @foreach ($all as $quiz )
+
+                                    @foreach ($data['quiz'] as $quiz )
                                       <tr>
-                                        <td scope="row"><?php echo $no++; ?></td>
+                                        <td scope="row">{{ $loop->iteration }}</td>
                                         <td>{{ $quiz->title }}</td>
-                                        <td>{{ $quiz->created_at }}</td>
-                                        <td><a href="{{ route('quiz.show', $quiz->id) }}"><i class="fas fa-arrow-right    "></i></a></td>
+                                        <td>{{  Carbon\Carbon::parse($quiz->created_at)->diffForHumans() }} </td>
+                                        <td><a href="{{ route('quiz.edit', $quiz->id) }}"><i class="fas fa-arrow-right    "></i></a></td>
                                       </tr>
                                       @endforeach
                                     </tbody>
@@ -158,46 +128,55 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script type="text/javascript">
-        $('.select2-lesson').select2({
-        placeholder: "Pilih atau cari Mata Pelajaran",
-        allowClear: false,
-        ajax: {
-            url: '/quiz/lessons-search',
-            dataType: 'json',
-            delay: 250,
-            processResults: function (data) {
-                return {
-                    results: $.map(data, function (item) {
-                        return {
-                            text: item.title,
-                            id: item.id
+        $('document').ready((e)=>{
+            $('input[type=radio][name=level_id]').on('change', function (){
+                var levelId = $(this).val();
+
+                if(levelId){
+                    $.ajax({
+                        url: '/filter/lesson/'+levelId,
+                        type: "GET",
+                        data : {"_token":"{{ csrf_token() }}"},
+                        dataType: "json",
+                        success:function(data){
+                            if(data){
+                                console.log(data);
+                                $('#lesson').empty();
+                                $('#lesson').append('<option disabled hidden>Pilih Mata Pelajaran</option>');
+                                $.each(data, function(lesson,lesson){
+                                    $('select[name="lesson_id"]').append('<option value="'+ lesson.id +'">' + lesson.title+ '</option>');
+                                });
+
+                                $('#lesson_name').val(data.title);
+                            } else {
+                                $('#lesson').empty();
+                            }
                         }
-                    })
-                };
-            },
-            cache: true
-        }
+                    });
+                }
+            });
+          function makeTableScroll() {
+                  // Constant retrieved from server-side via JSP
+              var maxRows = 10;
+              var table = document.getElementById('quiz_table');
+              var wrapper = table.parentNode;
+              var rowsInTable = table.rows.length;
+              var height = 0;
+              if (rowsInTable > maxRows) {
+                  for (var i = 0; i < maxRows; i++) {
+                      height += table.rows[i].clientHeight;
+                  }
+                  wrapper.style.height = height + "px";
+                  }
+              }
+
+          var $button = $("button");
+
+          $($button).on("click", function(){
+                  $(this).addClass("btn-progress")
+          })
         });
-        function makeTableScroll() {
-                // Constant retrieved from server-side via JSP
-            var maxRows = 10;
-            var table = document.getElementById('quiz_table');
-            var wrapper = table.parentNode;
-            var rowsInTable = table.rows.length;
-            var height = 0;
-            if (rowsInTable > maxRows) {
-                for (var i = 0; i < maxRows; i++) {
-                    height += table.rows[i].clientHeight;
-                }
-                wrapper.style.height = height + "px";
-                }
-            }
 
-        var $button = $("button");
 
-        $($button).on("click", function(){
-                $(this).addClass("btn-progress")
-        })
-
-    </script>
+      </script>
 @endsection

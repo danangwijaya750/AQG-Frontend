@@ -24,14 +24,23 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
+                    <div class="form-row col-md-12">
+                        <div class="form-group col-md-6">
                             <label for="instane">Asal instansi:</label><span
                                     class="text-danger">*</span>
-                            <input id="instane" type="instane"
+                            <input id="instane" type="text"
                                    class="form-control{{ $errors->has('instance') ? ' is-invalid' : '' }}"
                                    placeholder="Masukkan Instansi" name="instance" tabindex="1"
                                    value="{{ old('instance') }}"
+                                   required autofocus>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="instane">Profesi:</label><span
+                                    class="text-danger">*</span>
+                            <input id="profession" type="text"
+                                   class="form-control{{ $errors->has('profession') ? ' is-invalid' : '' }}"
+                                   placeholder="Masukkan Profesi" name="profession" tabindex="1"
+                                   value="{{ old('profession') }}"
                                    required autofocus>
                         </div>
                     </div>
@@ -65,7 +74,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="password_confirmation"
-                                   class="control-label">Confirm Password:</label><span
+                                   class="control-label">Konfirmasi Password:</label><span
                                     class="text-danger">*</span>
                             <input id="password_confirmation" type="password" placeholder="Konfirmasi password"
                                    class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid': '' }}"
@@ -78,7 +87,7 @@
                     <div class="col-md-12 mt-4">
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                                Register
+                              Buat Akun
                             </button>
                         </div>
                     </div>
@@ -87,7 +96,7 @@
         </div>
     </div>
     <div class="mt-5 text-muted text-center">
-        Already have an account ? <a
-                href="{{ route('login') }}">SignIn</a>
+        Sudah punya akun ? <a
+                href="{{ route('login') }}">Masuk</a>
     </div>
 @endsection

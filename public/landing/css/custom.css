@@ -1,0 +1,139 @@
+.logo-image {
+    width: 60px;
+}
+
+.section-title {
+    margin-bottom: 0;
+}
+
+.small-title {
+    font-family: Poppins;
+    font-variant: small-caps;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px !important;
+    line-height: 160% !important;
+    color: #00217a;
+}
+
+.content-container {
+    flex: auto;
+    align-items: center;
+}
+
+.main-title {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 72px !important;
+    line-height: 120% !important;
+    color: #f96f33;
+}
+
+.subtitle {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px !important;
+    line-height: 160% !important;
+    letter-spacing: 0.01em;
+    color: #00217a;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.theme-input-group {
+    font-size: 14px;
+}
+
+.theme-input-group button {
+    background-color: #00217a !important;
+    font-weight: 500;
+}
+
+.coming-soon .single_slide .container {
+    height: 100vh !important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.pt-40 {
+    padding-top: 40px;
+}
+
+.coming-soon .bg-image {
+    display: none;
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .content-image {
+        display: none;
+    }
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .content-image {
+        display: none;
+    }
+    .small-title {
+        font-size: 24px !important;
+    }
+
+    .main-title {
+        font-size: 64px !important;
+    }
+
+    .pt-40 {
+        padding-top: 1.5rem;
+    }
+
+    .coming-soon .bg-image {
+        display: block !important;
+        position: absolute;
+        width: calc(100%);
+        opacity: 0.2;
+        z-index: -4;
+        left: 0;
+        right: 0;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .content-image {
+        display: none;
+    }
+
+    .small-title {
+        font-size: 24px !important;
+    }
+    .main-title {
+        font-size: 64px !important;
+    }
+
+    .pt-40 {
+        padding-top: 1.5rem;
+    }
+
+    .coming-soon .bg-image {
+        display: block !important;
+        position: absolute;
+        width: calc(100%);
+        opacity: 0.2;
+        z-index: -4;
+        left: 0;
+        right: 0;
+    }
+}

@@ -10,6 +10,7 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 @if ($errors->any())
+                @include('vendor.lara-izitoast.toast')
                     <div class="alert alert-danger p-0">
                         <ul>
                             @foreach ($errors->all() as $error)

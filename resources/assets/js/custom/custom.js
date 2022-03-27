@@ -68,8 +68,8 @@ window.displayErrorMessage = function (message) {
 
 window.deleteItem = function (url, tableId, header, callFunction = null) {
     swal({
-            title: 'Delete !',
-            text: 'Are you sure want to delete this "' + header + '" ?',
+            title: 'Hapus !',
+            text: 'Hapus data "' + header + '" ?',
             type: 'warning',
             showCancelButton: true,
             closeOnConfirm: false,

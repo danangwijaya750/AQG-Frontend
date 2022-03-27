@@ -24,13 +24,13 @@
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                        Send Reset Link
+                        Kirim Link Reset Password
                     </button>
                 </div>
             </form>
         </div>
     </div>
     <div class="mt-5 text-muted text-center">
-        Recalled your login info? <a href="{{ route('login') }}">Sign In</a>
+       Teringat dengan akun mu? <a href="{{ route('login') }}">Masuk</a>
     </div>
 @endsection

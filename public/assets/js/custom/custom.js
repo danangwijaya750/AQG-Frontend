@@ -3029,7 +3029,7 @@ return $ || jsr;
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -3043,14 +3043,14 @@ return $ || jsr;
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
@@ -3131,7 +3131,7 @@ window.deleteItem = function (url, tableId, header) {
   var callFunction = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
   swal({
     title: 'Delete !',
-    text: 'Are you sure want to delete this "' + header + '" ?',
+    text: 'Hapus data "' + header + '" ?',
     type: 'warning',
     showCancelButton: true,
     closeOnConfirm: false,
