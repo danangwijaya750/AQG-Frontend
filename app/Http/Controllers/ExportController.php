@@ -21,6 +21,15 @@ class ExportController extends Controller
         return $pdf->download($data['quiz']['title'].'-'.Carbon::now().'.pdf');
     }
 
+    public function exportPublicPdf($id)
+    {
+        $quiz = Quiz::findOrFail($id);
+        $data['quiz'] = $quiz->load('lesson');
+        $data['levels'] = Level::get();
+        $pdf = PDF::loadview('export.quiz',compact('data'));
+        return $pdf->download($data['quiz']['title'].'-'.Carbon::now().'.pdf');
+    }
+
     public function exportStudyPDF($id)
     {
         $study = Studies::findOrFail($id);

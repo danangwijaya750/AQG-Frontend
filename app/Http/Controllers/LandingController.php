@@ -15,9 +15,8 @@ class LandingController extends Controller
      */
     public function index()
     {
-        $data['quiz'] = Quiz::where('is_sharing', 1)->limit(4)->get();
-        $data['studies'] = Studies::where('is_sharing', 1)->limit(4)->get();
-
+        $data['quiz'] = Quiz::where('is_sharing', 1)->orderBy('created_at')->limit(3)->get();
+        $data['studies'] = Studies::where('is_sharing', 1)->orderBy('created_at')->limit(3)->get();
 
         return view('landing', compact('data'));
     }
@@ -49,9 +48,30 @@ class LandingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showQuiz($id)
     {
-        //
+        $quiz = Quiz::findOrFail($id);
+        $data['quiz'] = $quiz->load('lesson');
+
+        return view('landing.detail_quiz', compact('data'));
+    }
+
+    public function showStudy($id)
+    {
+        $study = Studies::findOrFail($id);
+        $data['study'] = $study->load('lesson');
+
+        return view('landing.detail_study', compact('data'));
+    }
+
+    public function allQuiz(){
+        $data['quiz'] = Quiz::where('is_sharing', 1)->get();
+        return view('landing.all_quiz', compact('data'));
+    }
+
+    public function allStudy(){
+        $data['study'] = Studies::where('is_sharing', 1)->get();
+        return view('landing.all_study', compact('data'));
     }
 
     /**

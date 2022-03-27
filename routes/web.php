@@ -23,11 +23,18 @@ use App\Http\Controllers\LandingController;
 |
 */
 
-Route::get('/landing', [LandingController::class, 'index']);
-Route::get('/', function(){
-    return view('auth.login');
-});
-Route::get('/quiz/{id}/detail', [LandingController::class, 'edit'])->name('quiz.detail');
+Route::get('/', [LandingController::class, 'index']);
+// Route::get('/', function(){
+//     return view('auth.login');
+// });
+
+Route::get('/quiz/all', [LandingController::class, 'allQuiz'])->name('quiz.all');
+Route::get('/study/all', [LandingController::class, 'allStudy'])->name('study.all');
+Route::get('/quiz/{id}/detail', [LandingController::class, 'showQuiz'])->name('quiz.detail');
+Route::get('/study/{id}/detail', [LandingController::class, 'showStudy'])->name('study.detail');
+
+Route::get('/quiz/{id}/public/pdf', [ExportController::class, 'exportPDF'])->name('quiz.public.pdf');
+Route::get('/studu/{id}/public/pdf', [ExportController::class, 'exportStudyPDF'])->name('study.public.pdf');
 
 Route::group([
     'middleware' => ['auth', 'role:user']
