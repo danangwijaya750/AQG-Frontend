@@ -91,6 +91,7 @@
                             </div>
 
                             <div class="card-footer text-right">
+                                <a href="{{ route('admin.user.index') }}" class="btn btn-outline-danger">Batal</a>
                                 <button id="btn_generate" class="btn btn-icon icon-right btn-primary" type="submit">Tambah Pengguna <i class="fas fa-user"></i></button>
                             </div>
                         </form>
