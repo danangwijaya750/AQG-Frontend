@@ -71,3 +71,4 @@
                 href="{{ route('register') }}"> Buat akun</a>
     </div>
 @endsection
+    

@@ -96,7 +96,7 @@ class QuizController extends Controller
 
         try {
 
-            $base_url = 'http://34.123.179.240';
+            $base_url = 'http://34.133.120.133';
             $response = Http::asForm()->post($base_url.'/generator', [
                 'materi' => $lesson
             ]);
@@ -149,7 +149,7 @@ class QuizController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
