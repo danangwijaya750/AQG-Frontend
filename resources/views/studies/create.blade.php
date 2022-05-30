@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Buat Materi
+    Tambah Materi
 @endsection
 @section('content')
     <section class="section">
@@ -8,7 +8,7 @@
             <h3 class="page__heading">Materi</h3>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Buat Materi</h2>
+            <h2 class="section-title">Tambah Materi</h2>
             <p class="section-lead">Isi form dibawah untuk membuat materi.</p>
             <div class="row col-lg-12">
                 <div class="col-lg-7 col-md-7 col-sm-12">
@@ -75,7 +75,7 @@
                             </div>
 
                             <div class="card-footer text-right">
-                                <button id="btn_generate" class="btn btn-icon icon-right btn-primary" type="submit">Buat Materi <i class="fas fa-book-open    "></i></button>
+                                <button id="btn_generate" class="btn btn-icon icon-right btn-primary" type="submit">Tambah Materi <i class="fas fa-book-open    "></i></button>
                                 <a href="{{ route('study.index') }}" class="btn btn-outline-danger">Batal</a>
                             </div>
                         </form>

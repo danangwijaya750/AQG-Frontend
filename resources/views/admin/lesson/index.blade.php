@@ -16,7 +16,7 @@
                             <h4>Daftar Mata Pelajaran</h4>
                             <div class="card-header-action">
                               <a href="{{ route('admin.lesson.create') }}" class="btn btn-primary">
-                               Buat Mata Pelajaran
+                               Tambah Mata Pelajaran
                               </a>
                             </div>
                           </div>

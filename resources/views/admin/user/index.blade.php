@@ -16,7 +16,7 @@
                             <h4>Daftar Pengguna</h4>
                             <div class="card-header-action">
                               <a href="{{ route('admin.user.create') }}" class="btn btn-primary">
-                               Buat Pengguna
+                               Tambah Pengguna
                               </a>
                             </div>
                           </div>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Buat Mata Pelajaran
+    Tambah Mata Pelajaran
 @endsection
 @section('content')
     <section class="section">
@@ -8,7 +8,7 @@
             <h3 class="page__heading">Manajemen Mata Pelajaran</h3>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Buat Mata Pelajaran</h2>
+            <h2 class="section-title">Tambah Mata Pelajaran</h2>
             <p class="section-lead">Isi form dibawah untuk membuat Mata Pelajaran</p>
             <div class="row">
                 <div class="col-lg-12">
@@ -41,7 +41,7 @@
 
 
                             <div class="card-footer text-right">
-                                <button id="btn_generate" class="btn btn-icon icon-right btn-primary" type="submit">Buat Mata Pelajaran <i class="fas fa-graduation-cap"></i></button>
+                                <button id="btn_generate" class="btn btn-icon icon-right btn-primary" type="submit">Tambah Mata Pelajaran <i class="fas fa-graduation-cap"></i></button>
                             </div>
                         </form>
                         </div>

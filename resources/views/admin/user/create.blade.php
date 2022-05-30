@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Buat Materi
+    Tambah Materi
 @endsection
 @section('content')
     <section class="section">
@@ -8,7 +8,7 @@
             <h3 class="page__heading">Pengguna</h3>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Buat Pengguna</h2>
+            <h2 class="section-title">Tambah Pengguna</h2>
             <p class="section-lead">Isi form dibawah untuk membuat pengguna</p>
             <div class="row">
                 <div class="col-lg-12">
@@ -91,7 +91,7 @@
                             </div>
 
                             <div class="card-footer text-right">
-                                <button id="btn_generate" class="btn btn-icon icon-right btn-primary" type="submit">Buat Pengguna <i class="fas fa-user"></i></button>
+                                <button id="btn_generate" class="btn btn-icon icon-right btn-primary" type="submit">Tambah Pengguna <i class="fas fa-user"></i></button>
                             </div>
                         </form>
                         </div>

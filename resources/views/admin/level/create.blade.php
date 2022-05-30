@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Buat Tingkat Pendidikan
+    Tambah Tingkat Pendidikan
 @endsection
 @section('content')
     <section class="section">
@@ -8,7 +8,7 @@
             <h3 class="page__heading">Manajemen Tingkat Pendidikan</h3>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Buat Tingkat Pendidikan</h2>
+            <h2 class="section-title">Tambah Tingkat Pendidikan</h2>
             <p class="section-lead">Isi form dibawah untuk membuat Tingkat Pendidikan</p>
             <div class="row">
                 <div class="col-lg-12">
@@ -30,7 +30,8 @@
                             </div>
 
                             <div class="card-footer text-right">
-                                <button id="btn_generate" class="btn btn-icon icon-right btn-primary" type="submit">Buat Tingkat Pendidikan <i class="fas fa-school"></i></button>
+                                <a href="{{ route('admin.level.index') }}" class="btn btn-outline-danger">Batal</a>
+                                <button id="btn_generate" class="btn btn-icon icon-right btn-primary" type="submit">Tambah Tingkat Pendidikan <i class="fas fa-school"></i></button>
                             </div>
                         </form>
                         </div>

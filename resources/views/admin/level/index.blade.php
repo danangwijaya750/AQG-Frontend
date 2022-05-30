@@ -5,7 +5,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Mata Pelajaran</h3>
+            <h3 class="page__heading">Tingkat Pendidikan</h3>
         </div>
         <div class="section-body">
 
@@ -13,10 +13,10 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Daftar Mata Pelajaran</h4>
+                            <h4>Daftar Tingkat Pendidikan</h4>
                             <div class="card-header-action">
                               <a href="{{ route('admin.level.create') }}" class="btn btn-primary">
-                               Buat Mata Pelajaran
+                               Tambah Tingkat Pendidikan
                               </a>
                             </div>
                           </div>

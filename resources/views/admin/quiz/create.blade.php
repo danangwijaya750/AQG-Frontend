@@ -68,6 +68,7 @@
                                         <span class="selectgroup-button">Tidak</span>
                                     </label>
                                 </div>
+                                <small>*Soal yang dibagikan akan tampil di halaman depan dan bisa dilihat oleh semua orang</small>
                             </div>
                             </div>
                             <div class="card-footer text-right">

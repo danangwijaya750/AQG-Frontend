@@ -16,7 +16,7 @@
                             <h4>Daftar Soal</h4>
                             <div class="card-header-action">
                               <a href="{{ route('admin.study.create') }}" class="btn btn-primary btn-icon icon-right">
-                               Buat Materi <i class="fas fa-lightbulb"></i>
+                               Tambah Materi <i class="fas fa-lightbulb"></i>
                               </a>
                             </div>
                           </div>
