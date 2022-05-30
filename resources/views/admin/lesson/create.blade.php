@@ -41,6 +41,7 @@
 
 
                             <div class="card-footer text-right">
+                                <a href="{{ route('admin.lesson.index') }}" class="btn btn-outline-danger">Batal</a>
                                 <button id="btn_generate" class="btn btn-icon icon-right btn-primary" type="submit">Tambah Mata Pelajaran <i class="fas fa-graduation-cap"></i></button>
                             </div>
                         </form>
