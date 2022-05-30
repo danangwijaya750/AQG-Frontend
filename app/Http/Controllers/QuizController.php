@@ -11,6 +11,7 @@ use App\Models\Level;
 use App\Models\Question;
 use App\Models\Studies;
 use Carbon\Carbon;
+use Exception;
 use GuzzleHttp\Exception\ConnectException;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Client\ConnectionException;
@@ -107,7 +108,7 @@ class QuizController extends Controller
             $data = array('data' => $temp_data, 'questions' => $question);
 
             return redirect()->route('quiz.generated', ['id' => $user_id, 'hash' => $hash])->with(['data' => $data, notify()->success('Soal berhasil digenerate !','success',"topRight")]);
-        } catch (ConnectionException $e) {
+        } catch (Exception $e) {
             //throw $th;
             return RedirectHelper::redirectBackStatus('warning', 'Whoops '.$e->getMessage());
 

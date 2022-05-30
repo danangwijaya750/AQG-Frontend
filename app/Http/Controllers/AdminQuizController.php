@@ -6,8 +6,10 @@ use App\Helper\RedirectHelper;
 use App\Models\Lesson;
 use App\Models\Level;
 use App\Models\Quiz;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
 class AdminQuizController extends Controller
@@ -40,6 +42,8 @@ class AdminQuizController extends Controller
         return view('admin.quiz.create', compact('data'));
     }
 
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -53,7 +57,7 @@ class AdminQuizController extends Controller
             'level_id' => 'required',
             'lesson_id' => 'required',
             'is_sharing' => 'required',
-            'lesson' => 'required'
+            'lesson' => 'required|min:50'
         ]);
 
         if ($validator->fails()) {
@@ -68,25 +72,27 @@ class AdminQuizController extends Controller
         $level_data = Level::findOrFail($request->level_id);
         $temp_data = array('user_id'=> $user_id,'title' => $request->title, 'level_id' =>$request->level_id, 'lesson_id' => $request->lesson_id, 'level_name' => $level_data->title,'lesson_name'=>$lesson_data->title,'lesson' => $lesson,'hash' => $hash  ,'is_sharing' => $request->is_sharing);
 
-        // try {
-        //     //code...
-        //     $base_url = 'http://35.239.111.176';
-        //     $response = Http::asForm()->post($base_url.'/generator', [
-        //         'materi' => $lesson
-        //     ]);
+        try {
 
-        //     $data = json_decode($response, true);
-        // } catch (ConnectionException $e) {
-        //     //throw $th;
-        //     return back()->withError($e->getMessage())->withInput();
-        // }
+            $base_url = 'http://34.133.120.133';
+            $response = Http::asForm()->post($base_url.'/generator', [
+                'materi' => $lesson
+            ]);
 
-        $json = '[{"c":"C0","name":"C1-Mengingat","q":["aaaa","bbbb","hehehe"]},{"c":"C1","name":"C2-Memahami","q":["aaaac2","bbbbc2","hehehec2"]}]';
-        $question = json_decode($json,true);
+            // $jsonfile = json_decode($response, true);
+            $question = json_decode($response,true);
 
-        $data = array('data' => $temp_data, 'questions' => $question);
+            $data = array('data' => $temp_data, 'questions' => $question);
 
-        return redirect()->route('admin.quiz.generated', ['id' => $user_id, 'hash' => $hash])->with(['data' => $data, notify()->success('Soal berhasil digenerate !','success',"topRight")]);
+            return redirect()->route('admin.quiz.generated', ['id' => $user_id, 'hash' => $hash])->with(['data' => $data, notify()->success('Soal berhasil digenerate !','success',"topRight")]);
+        } catch (Exception $e) {
+            //throw $th;
+            return RedirectHelper::redirectBackStatus('warning', 'Whoops '.$e->getMessage());
+
+        }
+
+        // $json = '[{"c":"C0","name":"C1-Mengingat","q":["aaaa","bbbb","hehehe"]},{"c":"C1","name":"C2-Memahami","q":["aaaac2","bbbbc2","hehehec2"]}]';
+
     }
 
     public function save(Request $request)
